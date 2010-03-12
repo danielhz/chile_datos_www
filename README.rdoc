@@ -2,8 +2,8 @@
 
 == Estructura:
 
-+static+:: Documentos estáticos.
-+dynami+:: Servicios dinámicos.
++static/+:: Documentos estáticos.
++dynamic/+:: Servicios dinámicos.
 
 == Por hacer
 
@@ -15,4 +15,4 @@
 
 == Licencia
 
-© 2010 Daniel Hernández CC Atribución-Licenciar Igual 2.0 Chile. Esta licencia permite: _a_) copiar, distribuir, comunicar y ejecutar públicamente la obra, _b_) hacer obras derivadas; bajo las siguientes condiciones: (\_Atribución_) Debes reconocer y citar la obra de la forma especificada por el autor o el licenciante. (\_Licenciar Igual_) Si alteras o transformas esta obra, o generas una obra derivada, sólo puedes distribuir la obra generada bajo una licencia idéntica a ésta. Más información sobre la licencia de esta obra en: http://creativecommons.org/licenses/by-sa/2.0/cl/
+© 2010 Daniel Hernández CC Atribución-Licenciar Igual 2.0 Chile. Esta licencia permite: _a_) copiar, distribuir, comunicar y ejecutar públicamente la obra, _b_) hacer obras derivadas; bajo las siguientes condiciones: (<em>Atribución</em>) Debes reconocer y citar la obra de la forma especificada por el autor o el licenciante. (<em>Licenciar Igual</em>) Si alteras o transformas esta obra, o generas una obra derivada, sólo puedes distribuir la obra generada bajo una licencia idéntica a ésta. Más información sobre la licencia de esta obra en: http://creativecommons.org/licenses/by-sa/2.0/cl/
