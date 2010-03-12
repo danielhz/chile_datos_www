@@ -2,8 +2,8 @@
 
 == Estructura:
 
-<tt>static/</tt> Documentos estáticos.
-<tt>dynamic/</tt> Servicios dinámicos.
+* <tt>static/</tt> -- Documentos estáticos.
+* <tt>dynamic/</tt> -- Servicios dinámicos.
 
 == Por hacer
 
