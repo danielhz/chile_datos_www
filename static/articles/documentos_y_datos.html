@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+      "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:owl="http://www.w3.org/2002/07/owl#"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+ xmlns:foaf="http://xmlns.com/foaf/0.1/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>Iniciativa Chile Datos - Documentos y datos</title>
+  <meta name="generator" content="Amaya, see http://www.w3.org/Amaya/" />
+  <link href="../stylesheets/default.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div id="header">
+<h1>Iniciativa Chile Datos</h1>
+</div>
+
+<div id="site-menu">
+<a href="../index.html">Inicio</a> <a href="../nosotros.html">Nosotros</a> <a
+href="../comunidad.html">Comunidad</a> <a href="../recursos.html"
+class="current-node">Recursos</a> </div>
+
+<div id="main">
+
+<div id="abstract">
+<h1>Documentos y Datos</h1>
+
+<p>Una de las preguntas que podemos hacernos es dónde poner nuestra
+información, ¿en documentos o en bases de datos? Pareciera que los conceptos
+de ellos tienden a fundirse, por lo que necesitamos definirlos con claridad
+antes de tomar una desición: guardar la información directamente en bases de
+datos o guardarla en documentos que, a su vez, almacenaremos en una base de
+datos.</p>
+</div>
+
+<div id="content">
+<h2>Escogiendo un lenguaje para los datos</h2>
+
+<p>Para codificar los datos necesitamos un lenguaje que tenga un buen
+compromiso entre la expresividad y la complejidad. Para empezar, pensemos en lo
+más expresivo, pero también complejo, que tenemos entre los lenguajes
+formales: el lenguaje de la lógica.</p>
+
+<p>En lógica la información se entrega en unidades llamadas fórmulas. Por
+ejemplo, podemos tener una fórmula como:</p>
+
+<p style="text-align:center;margin-left:auto;margin-right:auto;">(∄ n)(
+n&gt;2 ∧ (∃ a,b,c)( a<sup>n</sup> + b<sup>n</sup> = c<sup>n</sup> ) )</p>
+
+<p>Nuestra conocimiento es habitualmente un conjunto de fórmulas que suponemos
+verdaderas y nuestra consulta es una fórmula cuya validez debemos comprobar a
+partir de dicho conjunto de fórmulas. Como bien conocemos, la fórmula de
+arriba es bastante compleja para ser resuelta fácilmente, en efecto, fue
+conjeturada en 1637, pero no se demostró hasta 1995. De este modo, el lenguaje
+de la lógica es un lenguaje altamente expresivo, pero demasiado complejo para
+ser útil como lenguaje para almacenar datos.</p>
+
+<p>Una reducción de la lógica son las cláusulas de Horn, es decir, fórmulas
+de la forma:</p>
+
+<p style="text-align:center;margin-left:auto;margin-right:auto;">¬p ∨ ¬q
+∨ ⋯ ∨ ¬r ∨ s</p>
+
+<p>O equivalentemente:</p>
+
+<p style="text-align:center;margin-left:auto;margin-right:auto;">( p ∧ q ∧
+⋯ ∧ r ) → s</p>
+
+<p>Cada uno de los elementos p, q, r, s son proposiciones que, en un sistema
+como Prolog son reemplazados por fórmulas tales como p(u,⋯,v). Donde p es un
+predicado n-ario y los argumentos son términos, que pueden ser constantes,
+literales o variables. Además, existen dos tipos de proposiciones especiales,
+la proposición verdadera (T) y la proposición falsa (F). La proposición
+verdadera nos permite definir un tipo de cláusula que llamamos hecho:</p>
+
+<p style="text-align:center;margin-left:auto;margin-right:auto;">T → p(s,
+o)</p>
+
+<p>El resto de las cláusulas de Horn, que a su izquierda tienen más de una
+proposición que no es T ni F son llamadas reglas.</p>
+
+<p>Dentro del mundo de Prolog todas las fórmulas pueden tomar los valores
+verdadero o falso. Si en un principio tenemos ciertas fórmulas declaradas como
+hechos, entonces, mediante un método llamado resolución, podemos decidir si
+una fórmula dada arbitrariamente es cierta o falsa. Será cierta cuando se
+encuentre entre las fórmulas que hemos declarado como ciertas (nuestra base de
+hechos) o cuando podamos deducirla de ellas mediante reglas. De lo contrario,
+será falsa. Además, cuando dicha fórmula contenga variables, Prolog podrá
+nombrarnos todas las constantes o literales que las pueden instanciar generando
+una fórmula verdadera.</p>
+
+<p>Si quitamos las reglas de Prolog, quedándonos sólo con hechos con
+argumentos literales, el resultado será el modelo relacional. Los hechos
+serán cláusulas de la forma:</p>
+
+<p style="text-align:center;margin-left:auto;margin-right:auto;">T →
+p(x<sub>1</sub>,x<sub>2</sub>,x<sub>3</sub>,⋯,x<sub>n</sub>)</p>
+
+<p>donde p representa a la relación (o tabla) y los elementos
+x<sub>1</sub>,x<sub>2</sub>,x<sub>3</sub>,⋯,x<sub>n</sub> son los términos
+literales.</p>
+
+<p>De igual modo, obtenemos el modelo de triples de RDF, al quitar las reglas y
+dejar sólo los hechos de la forma:</p>
+
+<p style="text-align:center;margin-left:auto;margin-right:auto;">T → p(s,
+o)</p>
+
+<p>donde p representa un predicado, s un sujeto (variable o constante) y o un
+objeto (constante, variable o literal). En RDF las variables son llamadas nodos
+blancos y las constantes son las URI.</p>
+
+<p>Tanto en el modelo relacional como en RDF, verificar si una fórmula es
+cierta o no, consitirá en buscarla entre las que fueron declaradas como
+ciertas. Además, es posible buscar por un conjunto de elementos que satisfacen
+determinada estructura.</p>
+
+<p>Un tipo de datos que podría ser interesante revisar es el de los documentos
+XML. Marcelo Arenas y Leonid Libkin definen un concepto de tuplas en los
+documentos XML, en “A normal Form for XML Documents” que podría ser
+revisado para ver si coincide con la noción de hechos en las cláusulas de
+Horn.</p>
+
+<p>En resumen, hemos encontrado una noción para el concepto de dato: un dato
+es un hecho.</p>
+
+<h2>Documentos</h2>
+
+<p>Cuando hablemos de documentos, nos referiremos a los documentos digitales,
+es decir, a archivos compuestos por una secuencia de bytes. Un documento puede
+ser, por ejemplo, un archivo PDF, una foto satelital, un archivo CSV, un dump
+de una base de datos o un archivo HTML. En algunos casos de los documentos
+podremos extraer datos, ello dependerá de lo que haya codificado en el
+documento y de nuestra capacidad para hacerlo. Por ejemplo, la foto satelital
+podría entregarnos datos de la naturaleza del terreno por cada coordenada y el
+archivo CSV podrá entregarnos datos en forma de tabla.</p>
+
+<p>Un caso interesante es el archvivo HTML. Si se usa un sistema para codificar
+datos como RDFa o algún microformato, entonces podremos extraer datos con una
+aplicación diseñada para ello. Pero, si la información es sólo descrita
+mediante el lenguaje natural, la extracción de datos se podría complicar y
+hacer menos exacta.</p>
+
+<p>De este modo, podemos definir un documento utilizando los mismos elementos
+que usamos en un comienzo para definir los datos: un documento será
+simplemente un literal.</p>
+
+<h2>Bases de datos</h2>
+
+<p>Cuando solemos referirnos a bases de datos, no lo hacemos para referirnos a
+sólamente a un conjunto de datos que podemos inspeccionar para responder a
+alguna consulta. Más bien, nos referimos a un sistema que permite alamacenar,
+borrar, modificar y consultar datos. De este modo, si bien, un documento
+podría ser considerado como una fuente de datos, en la medida que podamos
+extraer datos de él, no podría ser considerado una base de datos. De igual
+modo una base de datos no podría ser considerada un documento (o un literal),
+porque incorpora variabilidad en los datos contenidos.</p>
+
+<h2>Qué identifican las URI</h2>
+
+<p>Inicialmente los identificadores de la web eran los UDL (Uniform Document
+Locator), luego pasaron a ser las URL (Uniform Resource Locator). Este cambio
+se debió a que inicialmente la web era vista como un sistema que haría
+accesible documentos almacenados en varios computadores, pero más tarde los
+objetos accesibles dejaron de ser sólo documentos, por lo que se cambió el
+nombre a recurso. El siguiente nombre fue el de URI (Uniform Resource
+Identifier), donde el concepto localizador se cambió por el de identificador,
+dando a entender que ahora la web sería una red de objetos identificables y
+dando espacio a la incorporación de semántica mediante RDF. El siguiente
+paso, las IRI (Internationalized Resource Identifier) fue sólo con el objeto
+de pasar del ASCII a un conjunto de caracteres que permitiera incluir otros
+leguajes tales como el chino, el coreano, el kanji japonés o el cirílico. De
+este modo, por el momento, nos quedaremos pensando en las URI, pues son las que
+dan el último salto conceptual.</p>
+
+<p>Volviendo a la pregunta “qué identifican las URI”, hoy lo que obtenemos
+en el navegador cuando ingresamos una URI es un documento, que bien podría
+haberse encontrado almacenado en un disco duro como antaño, o bien, podría
+haberse generado con datos provenientes de diversas fuentes, tales como bases
+de datos, nuestro lenguaje declarado en el navegador, proveniencia geográfica
+de la petición HTTP, datos en la sesión u otros datos circunstanciales. En
+muchos casos, si volvemos a digitar la misma URI, lo que obtendremos será algo
+distinto. De este modo, una URI no identifica un documento, en el sentido de
+“literal” propuesto anteriormente.</p>
+
+<p>La web se comporta como una base de datos, en el sentido de que los datos se
+van modificando por el tiempo. Además, tenemos dos maneras de interpretar las
+URI. Por un lado las URI representan objetos abstractos de los cuales podría
+hacerse referencia en triples RDF que podemos extraer analizando (o parseando)
+un conjunto de recursos en la Web y, por otro lado, identifican al recurso o
+literal que obtenemos como respuesta satisfactoria de una petición HTTP. Esta
+respuesta satisfactoria (con status 200) puede ser interpretada como un dato
+temporal en la forma:</p>
+
+<p style="text-align:center;margin-left:auto;margin-right:auto;">T →
+associate(uri, resource)</p>
+
+<p>donde resource corresponde al documento (o literal) contenido en la
+respuesta a una petición HTTP, aunque más tarde la respuesta pueda ser
+otra.</p>
+
+<h2>Efectos en la publicación de datos</h2>
+
+<p>Con estos conceptos volvemos a nuestra pregunta incial sobre dónde poner la
+información y nos encontramos con al menos dos alternativas:</p>
+<ol>
+  <li>Poner los datos directamente en una base de datos.</li>
+  <li>Poner los datos dentro de documentos y los documentos dentro de una base
+    de datos.</li>
+</ol>
+
+<p>Por ahora voy a adelantar que mi propuesta es la alternativa 2, pero voy a
+dejar las justifcaciones para más adelante.</p>
+</div>
+</div>
+
+<div id="footer">
+<p>Algunos derechos reservados © 2010 por <a href="nosotros.html">Iniciativa
+Chile Datos</a> bajo la licencia abierta <a
+href="http://creativecommons.org/licenses/by-sa/2.0/cl">CC
+Atribución-Licenciar Igual 2.0 Chile</a>. Los códigos de este sitio también
+se encuentran disponibles para ser revisados y mejorados en un <a
+href="http://github.com/danielhz/chile_datos_www">repositorio git</a>.</p>
+
+<p> </p>
+</div>
+</body>
+</html>
