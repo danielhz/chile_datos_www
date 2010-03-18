@@ -5,7 +5,7 @@ body {
     font-size: 10pt;
 }
 #header {
-    background-color: #793;
+    background: #793 url('../images/header-bg.png') repeat-x;
     color: white;
     border-top: 4px solid #9a3;
 }
@@ -25,7 +25,7 @@ body {
     text-decoration: none;
 }
 #site-menu a.current-node {
-    background-color: #793;
+    background: #573 url('../images/header-menu-bg.png') repeat-x;
     color: white;
     margin: 0px 10px 0 10px;
     padding: 4px 10px 4px 10px;
