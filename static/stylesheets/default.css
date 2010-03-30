@@ -83,3 +83,7 @@ body {
     color: #793;
     text-decoration: none;
 }
+pre {
+    border-left: 10px solid #bdf;
+    padding-left: 10px;
+}

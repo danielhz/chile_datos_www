@@ -40,26 +40,48 @@ datos.</p>
 </div>
 
 <div id="content">
-<h2>Escogiendo un lenguaje para los datos</h2>
+<h2>Escogiendo una definición para los datos</h2>
 
-<p>Para codificar los datos necesitamos un lenguaje que tenga un buen
-compromiso entre la expresividad y la complejidad. Para empezar, pensemos en lo
-más expresivo, pero también complejo, que tenemos entre los lenguajes
-formales: el lenguaje de la lógica.</p>
+<p>Un sistema para administrar el conocimiento puede ser descrito por las
+componentes de la siguiente figura:</p>
 
-<p>En lógica la información se entrega en unidades llamadas fórmulas. Por
-ejemplo, podemos tener una fórmula como:</p>
+<p><img alt="Sistema de conocimiento" src="../images/sistema_conocimiento.png"
+style="display: block; text-align: center; margin-left: auto; margin-right: auto"
+width="400" height="74" /></p>
+
+<p>Un repositorio donde ponemos las unidades del conocimiento actual, un
+lenguaje para hacer consultas y un lenguaje para las respuestas obtenidas. Bajo
+estas tres componentes se encuentra un conjunto de reglas que permiten
+responder la consulta. Hablamos de conocimiento en vez de datos, porque nos
+situamos en un caso general. Los datos pueden ser vistos como un caso
+particular, en el cual el lenguaje logra un buen compromiso entre la
+expresividad y la complejidad. De lo contrario, no sería útil en la
+práctica.</p>
+
+<p>Para empezar nuestra búsqueda del concepto de dato, pensemos en lo más
+expresivo, pero también complejo, que tenemos entre los lenguajes formales: el
+lenguaje de la lógica.</p>
+
+<p>En lógica la base de conocimiento está formada de unidades llamadas
+fórmulas. Una consulta es una fórmula más, por ejemplo:</p>
 
 <p style="text-align:center;margin-left:auto;margin-right:auto;">(∄ n)(
 n&gt;2 ∧ (∃ a,b,c)( a<sup>n</sup> + b<sup>n</sup> = c<sup>n</sup> ) )</p>
 
-<p>Nuestra conocimiento es habitualmente un conjunto de fórmulas que suponemos
-verdaderas y nuestra consulta es una fórmula cuya validez debemos comprobar a
-partir de dicho conjunto de fórmulas. Como bien conocemos, la fórmula de
-arriba es bastante compleja para ser resuelta fácilmente, en efecto, fue
-conjeturada en 1637, pero no se demostró hasta 1995. De este modo, el lenguaje
-de la lógica es un lenguaje altamente expresivo, pero demasiado complejo para
-ser útil como lenguaje para almacenar datos.</p>
+<p>Responder a la consulta significa verificar si las reglas del sistema nos
+permiten llegar en un número finito de pasos desde las fórmulas en la base de
+conocimiento hasta la formula de la consulta. La respuesta podría ser T si es
+que logramos encontrar dichos pasos o F si es que encontramos una secuencia de
+pasos hasta la formula negada.</p>
+
+<p>Como bien conocemos, la fórmula de arriba es bastante compleja para ser
+resuelta fácilmente, en efecto, fue conjeturada en 1637, pero no se demostró
+hasta 1995. A veces es posible demostrar que nunca podremos llegar a una
+respuesta, pero hacer este tipo de demostraciones es también una tarea
+difícil, por lo que en muchos casos nos encontramos con que no hemos logrado
+llegar a la respuesta y tampoco sabemos si es posible llegar a ella. De este
+modo, el lenguaje de la lógica es un lenguaje altamente expresivo, pero
+demasiado complejo para ser útil como lenguaje para almacenar datos.</p>
 
 <p>Una reducción de la lógica son las cláusulas de Horn, es decir, fórmulas
 de la forma:</p>
@@ -72,32 +94,30 @@ de la forma:</p>
 <p style="text-align:center;margin-left:auto;margin-right:auto;">( p ∧ q ∧
 ⋯ ∧ r ) → s</p>
 
-<p>Cada uno de los elementos p, q, r, s son proposiciones que, en un sistema
-como Prolog son reemplazados por fórmulas tales como p(u,⋯,v). Donde p es un
-predicado n-ario y los argumentos son términos, que pueden ser constantes,
-literales o variables. Además, existen dos tipos de proposiciones especiales,
-la proposición verdadera (T) y la proposición falsa (F). La proposición
-verdadera nos permite definir un tipo de cláusula que llamamos hecho:</p>
+<p>Cada uno de los elementos p, q, r, s representan fórmulas tales como
+p(u,⋯,v). Donde p es un predicado n-ario y los argumentos u,⋯,v son
+términos, que pueden ser constantes, literales o variables. Además, existen
+dos tipos de proposiciones especiales, la proposición verdadera (T) y la
+proposición falsa (F). La proposición verdadera nos permite definir un tipo
+de cláusula que llamamos hecho:</p>
 
-<p style="text-align:center;margin-left:auto;margin-right:auto;">T → p(s,
-o)</p>
+<p style="text-align:center;margin-left:auto;margin-right:auto;">T →
+p(u,⋯,v)</p>
 
-<p>El resto de las cláusulas de Horn, que a su izquierda tienen más de una
-proposición que no es T ni F son llamadas reglas.</p>
+<p>Las cláusulas como F → p(u,⋯,v) pueden ser omitidas, porque no aportan
+información. El resto de las cláusulas de Horn son llamadas reglas.</p>
 
-<p>Dentro del mundo de Prolog todas las fórmulas pueden tomar los valores
-verdadero o falso. Si en un principio tenemos ciertas fórmulas declaradas como
-hechos, entonces, mediante un método llamado resolución, podemos decidir si
-una fórmula dada arbitrariamente es cierta o falsa. Será cierta cuando se
-encuentre entre las fórmulas que hemos declarado como ciertas (nuestra base de
-hechos) o cuando podamos deducirla de ellas mediante reglas. De lo contrario,
-será falsa. Además, cuando dicha fórmula contenga variables, Prolog podrá
-nombrarnos todas las constantes o literales que las pueden instanciar generando
-una fórmula verdadera.</p>
+<p>Considerando sólo las cláusulas de Horn nuestra base de conocimiento puede
+ser un conjunto de reglas y hechos. Una consulta es un hecho que puede contener
+variables y la respuesta dicha consulta es conjunto de todos los hechos que
+pueden ser deducidos de la base de conocimiento y que instancien las variables
+de la consulta. Las reglas del sistema (no las de la base de conocimiento)
+definen un algoritmo conocido como resolución, que es implementado en
+lenguajes como Prolog.</p>
 
-<p>Si quitamos las reglas de Prolog, quedándonos sólo con hechos con
-argumentos literales, el resultado será el modelo relacional. Los hechos
-serán cláusulas de la forma:</p>
+<p>Si quitamos las reglas de la base de conocimiento, quedándonos sólo con
+hechos con argumentos literales, el resultado será el modelo relacional. Los
+hechos serán cláusulas de la forma:</p>
 
 <p style="text-align:center;margin-left:auto;margin-right:auto;">T →
 p(x<sub>1</sub>,x<sub>2</sub>,x<sub>3</sub>,⋯,x<sub>n</sub>)</p>
@@ -105,6 +125,20 @@ p(x<sub>1</sub>,x<sub>2</sub>,x<sub>3</sub>,⋯,x<sub>n</sub>)</p>
 <p>donde p representa a la relación (o tabla) y los elementos
 x<sub>1</sub>,x<sub>2</sub>,x<sub>3</sub>,⋯,x<sub>n</sub> son los términos
 literales.</p>
+
+<p>El lenguaje de consulta más usado en el modelo relacional es SQL, por
+ejemplo:</p>
+<pre>SELECT a.x, b.y FROM a, b WHERE a.u = b.v;</pre>
+
+<p>Podemos resolver dicha consulta, mapeándola a un sistema con cláusulas de
+Horn, agregando la siguente regla al conjunto de hechos correspondiente a los
+datos relacionales:</p>
+
+<p style="text-align:center;margin-left:auto;margin-right:auto;">a(x,u), b(y,u)
+→ r(x,y)</p>
+
+<p>De esta manera, responder a la consulta en el modelo relacional equivale a
+responder la consulta r(x,y) en el sitema de cláusulas de Horn.</p>
 
 <p>De igual modo, obtenemos el modelo de triples de RDF, al quitar las reglas y
 dejar sólo los hechos de la forma:</p>
@@ -116,30 +150,176 @@ o)</p>
 objeto (constante, variable o literal). En RDF las variables son llamadas nodos
 blancos y las constantes son las URI.</p>
 
-<p>Tanto en el modelo relacional como en RDF, verificar si una fórmula es
-cierta o no, consitirá en buscarla entre las que fueron declaradas como
-ciertas. Además, es posible buscar por un conjunto de elementos que satisfacen
-determinada estructura.</p>
+<p>El lenguaje de consulta más usado para RDF es SPARQL, por ejemplo:</p>
+<pre>SELECT ?x, ?y
+WHERE {
+  ?u p ?x .
+  ?u q ?y .
+};</pre>
 
-<p>Un tipo de datos que podría ser interesante revisar es el de los documentos
-XML. Marcelo Arenas y Leonid Libkin definen un concepto de tuplas en los
-documentos XML, en “A normal Form for XML Documents” que podría ser
-revisado para ver si coincide con la noción de hechos en las cláusulas de
-Horn.</p>
+<p>Donde p, q corresponden a predicados, mientras que ?x, ?y, ?u son variables.
+Para codificar la misma pregunda en el lenguaje de las cláusulas de Horn
+debemos por r(x,y) agregando previamente la regla:</p>
 
-<p>En resumen, hemos encontrado una noción para el concepto de dato: un dato
-es un hecho.</p>
+<p style="text-align:center;margin-left:auto;margin-right:auto;">p(x,u), q(y,v)
+→ r(x,y)</p>
+
+<p>De este modo, tanto en el modelo relacional como en RDF, es posible obtener
+un conjunto de hechos que instancian una consulta según el modelo de
+cláusulas de Horn.</p>
+
+<p>¿Hay algo más complejo que los hechos y que merezca también ser
+considerado dato? ¿Qué se puede, por ejemplo, decir sobre las bases de datos
+geográficas, espaciales, semi-estructuradas o XML? Para intentar resolver esta
+pregunta vamos a tomar el caso de las bases de datos XML. Marcelo Arenas y
+Leonid Libkin, en “A normal Form for XML Documents”, definen el siguiente
+concepto de tuplas en los documentos XML: Una tupla es una función t : P →
+E, donde P es el conjunto de los las rutas desde la raíz a cada uno de los
+nodos posibles del árbol XML y E es un valor que un documento tendría en el
+último nodo de la ruta (incluyendo el elemento nulo). Las tuplas está
+restringidas por ciertas propiedades, entre las que se encuetra que debe haber
+una cantidad finita de rutas tales que t(p) no es nulo. Aprovechando esta
+finitud podemos hacer un primer intento para expresar las tuplas XML como
+clásulas de horn mediante un cojunto de hechos de la forma:</p>
+
+<p style="text-align:center;margin-left:auto;margin-right:auto;">T
+→τ(e,p)</p>
+
+<p>para cada par elemento p tal que t(p) = e y e no es nulo. Sin embargo, las
+rutas de los documentos XML no son objetos opacos. En efecto, la estructura de
+los documentos XML se basa en las componentes codificadas de las rutas. Una
+extensión posible para la forma anterior es</p>
+
+<p style="text-align:center;margin-left:auto;margin-right:auto;">T
+→τ(e,v<sub>1</sub>,v<sub>2</sub>,⋯,v<sub>n</sub>)</p>
+
+<p>No obstante, esta noción requeriría que τ fuera una fórmula variadica
+(de número variable de argumentos), lo que no venía incluído en el lenguaje
+de las cláusulas de Horn. Una función alternativa es agregar las relaciones
+entre las rutas del árbol XML mediante los siguientes predicados:
+primerHijo(p,q) y siguienteHermano(p,q). De este modo le damos una semántica a
+los documentos XML en el sentido de las cláusulas de Horn. Sin embargo, aún
+falta verificar el lenguaje de consulta, el siguiente es un ejemplo de
+XQuery:</p>
+<pre>&lt;result&gt;
+  {
+    for $a in doc("a.xml")//a,
+        $b in doc("b.xml")//b
+    where $a/u = $b/u
+    return
+    &lt;item&gt;
+      &lt;x&gt;{ string($a/x) }&lt;/x&gt;
+      &lt;y&gt;{ string($b/y) }&lt;/y&gt;
+    &lt;/item&gt;
+  }
+&lt;/result&gt;</pre>
+
+<p>En una primera instancia, podríamos pensar que, la consulta es similar a
+preguntar por r(x,y) incorporando las siguientes reglas:</p>
+
+<table border="0" style="width: 100%">
+  <col />
+  <col />
+  <col />
+  <tbody>
+    <tr>
+      <td
+        style="text-align:right;margin-left:auto;margin-right:0;">valorXA(x,a),
+        valorYB(y,b), valorU(a,u), valorU(b,u)</td>
+      <td style="text-align:center;margin-left:auto;margin-right:auto;">→</td>
+      <td>r(x,y)</td>
+    </tr>
+    <tr>
+      <td style="text-align:right;margin-left:auto;margin-right:0;">τ("a",
+        a1), τ("x", a2), hijo(a1, a2)</td>
+      <td style="text-align:center;margin-left:auto;margin-right:auto;">→</td>
+      <td>valorXA(x,a1)</td>
+    </tr>
+    <tr>
+      <td style="text-align:right;margin-left:auto;margin-right:0;">τ("b",
+        b1), τ("y", b2), hijo(b1, b2)</td>
+      <td style="text-align:center;margin-left:auto;margin-right:auto;">→</td>
+      <td>valorYB(y,b1)</td>
+    </tr>
+    <tr>
+      <td style="text-align:right;margin-left:auto;margin-right:0;">τ(u, c2),
+        hijo(c1, c2)</td>
+      <td style="text-align:center;margin-left:auto;margin-right:auto;">→</td>
+      <td>valorU(u,c1)</td>
+    </tr>
+    <tr>
+      <td
+        style="text-align:right;margin-left:auto;margin-right:0;">siguienteHermano(p1,p2)</td>
+      <td style="text-align:center;margin-left:auto;margin-right:auto;">→</td>
+      <td>hermano(p1,p2)</td>
+    </tr>
+    <tr>
+      <td
+        style="text-align:right;margin-left:auto;margin-right:0;">hermano(p1,p2),
+        hermano(p2,p3)</td>
+      <td style="text-align:center;margin-left:auto;margin-right:auto;">→</td>
+      <td>hermano(p1,p3)</td>
+    </tr>
+    <tr>
+      <td
+        style="text-align:right;margin-left:auto;margin-right:0;">primerHijo(p,q)</td>
+      <td style="text-align:center;margin-left:auto;margin-right:auto;">→</td>
+      <td>hijo(p,q)</td>
+    </tr>
+    <tr>
+      <td style="text-align:right;margin-left:auto;margin-right:0;">hijo(q,p1),
+        hermano(p1,p2)</td>
+      <td style="text-align:center;margin-left:auto;margin-right:auto;">→</td>
+      <td>hijo(p2,q)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Pero esa respuestá será sólo una lista de pares que instancian la
+consulta, es decir, desprovistos de la estructura que se incluye en la
+consulta. La diferencia es más clara con una consulta como la siguiente:</p>
+<pre>&lt;result&gt;
+  {
+    for $a in doc("a.xml")//a
+    return
+    &lt;item&gt;
+      &lt;x&gt;{ string($a/x) }&lt;/x&gt;
+      &lt;sub-items&gt;
+        for $b in doc("b.xml")//b
+        where $a/u = $b/u
+        return
+        &lt;y&gt;{ string($b/y) }&lt;/y&gt;
+      &lt;/sub-items&gt;
+    &lt;/item&gt;
+  }
+&lt;/result&gt;</pre>
+
+<p>En resumen, hemos encontrado una noción para el concepto de dato, como
+hechos en el sentido de las cláusulas de Horn. Es útil para algunos casos,
+pero aún falta hacer una revisión para el caso en el cual es necesario
+responder con una estructura.</p>
+
+<h2>Elementos opacos y no tan opacos</h2>
+
+<p>En la sección anterior se mencionó el concepto de datos opacos. La idea
+era definir un el concepto de datos de la forma más sencilla posible, por lo
+que introducir la complejidad interna de sus tipos parecía no recomendable a
+ese nivel de discusión. En las bases de datos no trabajan con elementos
+opacos. Existen numerosas funciones que nos permiten obtner valores agregados
+de varios elementos, comoavg, sum, min, etc. y operadores que nos permiten
+filtrar los datos en una consulta, como &gt; o &lt;.</p>
 
 <h2>Documentos</h2>
 
-<p>Cuando hablemos de documentos, nos referiremos a los documentos digitales,
-es decir, a archivos compuestos por una secuencia de bytes. Un documento puede
-ser, por ejemplo, un archivo PDF, una foto satelital, un archivo CSV, un dump
-de una base de datos o un archivo HTML. En algunos casos de los documentos
-podremos extraer datos, ello dependerá de lo que haya codificado en el
-documento y de nuestra capacidad para hacerlo. Por ejemplo, la foto satelital
-podría entregarnos datos de la naturaleza del terreno por cada coordenada y el
-archivo CSV podrá entregarnos datos en forma de tabla.</p>
+<p>En esta sección mejor hacer una revisión.</p>
+<del><p>Cuando hablemos de documentos, nos referiremos a los documentos
+digitales, es decir, a archivos compuestos por una secuencia de bytes. Un
+documento puede ser, por ejemplo, un archivo PDF, una foto satelital, un
+archivo CSV, un dump de una base de datos o un archivo HTML. En algunos casos
+de los documentos podremos extraer datos, ello dependerá de lo que haya
+codificado en el documento y de nuestra capacidad para hacerlo. Por ejemplo, la
+foto satelital podría entregarnos datos de la naturaleza del terreno por cada
+coordenada y el archivo CSV podrá entregarnos datos en forma de tabla.</p>
 
 <p>Un caso interesante es el archvivo HTML. Si se usa un sistema para codificar
 datos como RDFa o algún microformato, entonces podremos extraer datos con una
@@ -150,7 +330,7 @@ hacer menos exacta.</p>
 <p>De este modo, podemos definir un documento utilizando los mismos elementos
 que usamos en un comienzo para definir los datos: un documento será
 simplemente un literal.</p>
-
+</del>
 <h2>Bases de datos</h2>
 
 <p>Cuando solemos referirnos a bases de datos, no lo hacemos para referirnos a
