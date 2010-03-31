@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+      "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:owl="http://www.w3.org/2002/07/owl#"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+ xmlns:foaf="http://xmlns.com/foaf/0.1/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>Iniciativa Chile Datos - El concepto de dato</title>
+  <meta name="generator" content="Amaya, see http://www.w3.org/Amaya/" />
+  <link href="../stylesheets/default.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div id="header">
+<h1>Iniciativa Chile Datos</h1>
+</div>
+
+<div id="site-menu">
+<a href="../index.html">Inicio</a> <a href="../nosotros.html">Nosotros</a> <a
+href="../comunidad.html">Comunidad</a> <a href="../recursos.html"
+class="current-node">Recursos</a> </div>
+
+<div id="main">
+
+<div id="abstract">
+<h1>El concepto de dato</h1>
+
+<p>Habitualmente hablamos de datos, estructuras de datos, bases de datos y, a
+pesar de lo heterogéneo de éstos, a todas estas unidades de información las
+llamamos datos. En principio podríamos preguntarnos si cualquier pieza de
+información escrita en un lenguaje preciso o formal podría ser considerada un
+dato, o si esta clasificación estaría reservada sólo a una clase particular.
+De este modo, en este artículo propondremos un definición para el término
+dato.</p>
+</div>
+
+<div id="content">
+<p>Para empezar, pensemos en lo más expresivo, pero también complejo, que
+tenemos entre los lenguajes formales: el lenguaje de la lógica. En lógica las
+unidades de información son las llamadas fórmulas, por ejemplo:</p>
+
+<p style="text-align:center;margin-left:auto;margin-right:auto;">(∄ n)(
+n&gt;2 ∧ (∃ a,b,c)( a<sup>n</sup> + b<sup>n</sup> = c<sup>n</sup> ) )</p>
+
+<p>A algunos nos parece que esta fórmula es demasiado compleja para ser
+llamada un dato. Por otro lado, lo más simple es tomar un simple valor, como
+24. Sin embargo a mi me parece que 24 tampoco es un dato.</p>
+
+<p>En este tipo de discusiones a menudo nos hacemos la pregunta de si realmente
+existe un límite para entre lo que es dato y lo que no es dato, o si de
+encontrarlo, nos sería útil para algo. Comencemos pensando en los requisitos
+de que debiera cumplir algo que sea llamado dato:</p>
+<ol>
+  <li><strong>Ser caracterizable como verdadero o falso</strong>. En particular
+    nos interesa saber si un dato es verdadero o si el dato es falso. Por ello
+    anteriormente descartamos 24 como un dato. No obstante, una afirmación
+    sobre el 24 podría ser un dato, “hoy hubo una máxima de 24 grados” es
+    un dato, porque podríamos decir si es verdadero o falso. Por ejemplo, en
+    las bases de datos relacionales nos encontramos también con esta
+    semántica, si tenemos una tabla A con solo una columna y una de las filas
+    tiene el valor 24 ello significa que A(24) es verdadero. Podemos ver a A
+    como la fórmula lógica que se hace verdadera cada vez el término que
+    hace de argumento se encuentre registrado en la tabla.</li>
+  <li><strong>Ser una pieza minimal</strong>. Ciertas composiciones de datos no
+    debieran ser consideradas también un dato. Por ejemplo, si P y Q son
+    datos, entonces la fórmula P∧Q no debiera ser considerada un dato.</li>
+  <li><strong>Un sistema de consultas simple</strong>. La fórmula lógica
+    puesta al inicio es un ejemplo de algo para lo cual determinar su validez
+    resulta una tarea demasiado compleja. Fue conjeturada por Fermat en 1637,
+    pero no se demostró hasta 1995. La pregunta a responder es dónde poner el
+    límite de la complejidad.</li>
+  <li><strong>Ser consecuente con las bases de datos actuales</strong>. El
+    concepto de datos propuesto debería ser capaz de expresar la información
+    contenida en las bases de datos actuales.</li>
+</ol>
+
+<h2>Concepto de datos propuesto</h2>
+
+<p>Un dato será, dentro de esta propuesta, una fórmula evaluada A(x) que
+puede ser caracterizable como verdadera o falsa. Sin pérdida de generalidad,
+se considerará que A es una fórmula que posee un único argumento, pero su
+argumento podrá ser una estructura que permitirá que en la práctica sea
+utilizada como si fuera una fórmula n-aria e incluso variádica. Para
+caracterizar la naturaleza del argumento x utilizaremos la siguiente gramática
+libre de contexto:</p>
+
+<p><strong>Definición</strong> (Conjunto de argumentos): Dado un conjunto de
+términos T, el conjunto de argumentos G(T) queda definido mediante la
+siguiente gramática libre de contexto, donde <code>t</code> es el terminal que
+representa a los posibles elementos de T.</p>
+
+<table border="0" class="eqnarray">
+  <col class="leftside" />
+  <col class="middle" />
+  <col class="rightside" />
+  <tbody>
+    <tr>
+      <td>X</td>
+      <td>→</td>
+      <td>ε | A | A<code>,</code>F</td>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td>→</td>
+      <td><code>t</code> | <code>t</code><code>:</code>A |
+        <code>(</code>A<code>,</code>F<code>)</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>De este modo, ejemplos de datos serán A(<code>a:b,c</code>),
+A(<code>a:(b,c)</code>) y A(<code>a,b,c</code>). Además, los datos fueron
+escritos de este modo para codificar las estructuras de árboles.</p>
+
+<table border="0" style="width: 100%;border:1px solid black;padding:10px;">
+  <caption>Argumentos y sus estructuras de árbol</caption>
+  <col />
+  <col />
+  <col />
+  <col />
+  <tbody style="text-align:center;margin-left:auto;margin-right:auto;">
+    <tr>
+      <td><code>·<br />
+        / \<br />
+        a  c<br />
+        |   <br />
+        b   </code></td>
+      <td><code>·<br />
+        |<br />
+        a<br />
+        / \<br />
+        b  c</code></td>
+      <td><code>·<br />
+        / | \<br />
+        a  b  c</code></td>
+      <td><code>·<br />
+        |<br />
+        a<br />
+        |<br />
+        b<br />
+        |<br />
+        c</code></td>
+    </tr>
+    <tr>
+      <th
+        style="border-top: 1px dotted black; padding-top: 4px;"><code>a:b,c</code></th>
+      <th
+        style="border-top: 1px dotted black; padding-top: 4px;"><code>a:(b,c)</code></th>
+      <th
+        style="border-top: 1px dotted black; padding-top: 4px;"><code>a,b,c</code>
+      </th>
+      <th
+        style="border-top: 1px dotted black; padding-top: 4px;"><code>a:b:c</code></th>
+    </tr>
+  </tbody>
+</table>
+
+<p>El punto en los árboles es un símbolo especial para marcar la raíz.
+También hay que notar que estos árboles son estructuras ordenadas, es decir,
+importa el orden de izquierda a derecha en el que ponemos las ramas que salen
+de cada nodo.</p>
+
+<p><strong>Definición</strong> (profundidad de un dato): Llamaremos
+profundidad de un dato A(x) a la altura del árbol correspondiente a x menos
+1.</p>
+
+<p>Por ejemplo las alturas de A(<code>a:b,c</code>), A(<code>a:(b,c)</code>),
+A(<code>a,b,c</code>) y A() son respectivamente 2, 2, 1, 3 y 0.</p>
+
+<p>Almacenar datos no tendría sentido si no pudieramos hacer nada con ellos.
+En la práctica, hablamos de consultas cuando nos referimos a ciertas funciones
+que nos permiten hacer uso de los datos, extrayendo más datos. También
+hablamos de lenguajes de consulta cuando nos referimos a lenguajes que permiten
+codificar estas funciones, como por ejemplo SQL, SPARQL, MQL, XQuery.</p>
+
+<p>No obstante, una consulta no debiera ser cualquier función que nos lleve de
+un conjunto de datos a otro conjunto de datos. Debe cumplir el requerimiento de
+ser simple en términos de complejidad computación. Tanto los axiomas de la
+aritmética como el teorema de fermat son codificable como un dato, porque su
+estructura sintáctica es en forma de árbol. Sin embargo, la función para
+obtener el Teorema de Fermat a partir de los axiomas no es trivial.</p>
+
+<p>De este modo, el concepto de dato no tiene sentido si no se lo asocia a una
+interpretación, y la interpretación viene dada por las consultas. Así
+tenemos una nueva definición para los datos:</p>
+
+<p><strong>Definición</strong> (datos): Dado un sistema de datos S = (F, T,
+Q), donde F es un conjunto de predicados de fórmulas, T es un conjunto de
+términos y Q es un conjunto de consultas simples, llamaremos datos del sistema
+S a las fórmulas A(x) donde A∈F y x∈G(T).</p>
+
+<p>La definición anterior queda abierta, al no especificar aún lo que
+significa consultas simples.</p>
+
+<h2>Elementos opacos y no tan opacos</h2>
+
+<h2>Datos vs hechos en las cláusulas de Horn</h2>
+
+<h2>Datos vs modelo relacional</h2>
+
+<h2>Datos vs RDF</h2>
+
+<h2>Datos vs XML</h2>
+
+<h2>Datos vs Piche</h2>
+
+<h2>Conclusiones</h2>
+</div>
+</div>
+
+<div id="footer">
+<p>Algunos derechos reservados © 2010 por <a href="nosotros.html">Iniciativa
+Chile Datos</a> bajo la licencia abierta <a
+href="http://creativecommons.org/licenses/by-sa/2.0/cl">CC
+Atribución-Licenciar Igual 2.0 Chile</a>. Los códigos de este sitio también
+se encuentran disponibles para ser revisados y mejorados en un <a
+href="http://github.com/danielhz/chile_datos_www">repositorio git</a>.</p>
+
+<p> </p>
+</div>
+</body>
+</html>
