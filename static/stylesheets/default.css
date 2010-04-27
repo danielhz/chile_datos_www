@@ -130,4 +130,8 @@ table.eqnarray col.rightside {
    font-size: 9pt;
    font-family: serif;
    border-top: 1px solid #ccc;
+   padding-top: 4px;
+}
+div.news h2 {
+   margin-bottom: 2px;
 }

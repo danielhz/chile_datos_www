@@ -22,14 +22,27 @@ function tableOfContents() {
 	method: 'get',
 	onSuccess: function(response) {
 	  var xml = response.responseXML;
-	  var title       = xml.getElementById('dc:title').innerHTML;
-	  var description = xml.getElementById('dc:description');
-	  var date        = xml.getElementById('dc:date');
-	  var creator     = xml.getElementById('dc:creator');
+	  var title       = xml.getElementById('title').innerHTML;
+	  var description = xml.getElementById('description');
+	  var date        = xml.getElementById('date');
+	  var creator     = xml.getElementById('creator');
+	  description.writeAttribute('id',relativeURL + '#' + 'title');
+	  date.writeAttribute('id',relativeURL + '#' + 'description');
+	  creator.writeAttribute('id',relativeURL + '#' + 'creator');
+	  // update
 	  a.update(title);
-	  var news = new Element('div', {'about': baseURL + relativeURL});
+	  var news = new Element('div', {'about': baseURL + relativeURL, 'class': 'news'});
 	  news.insert(new Element('h2', {'property': 'dc:title'}).update(title));
+	  // publication info
+	  var pub = new Element('div', {'class': 'news-info'});
+	  pub.insert('Publicado en ');
+	  pub.insert(date);
+	  pub.insert(' por ');
+	  pub.insert(creator);
+	  news.insert(pub);
+	  // description
 	  news.insert(description);
+	  // link to source
 	  var source = new Element('div');
 	  source.setStyle({'float':'right'});
 	  source.insert(new Element('a', {'rel': 'dc:source', 'href': relativeURL}).update('[leer más]'));
@@ -37,7 +50,7 @@ function tableOfContents() {
 	  $('content').insert(news);
 	},
 	onFailure: function(response) {
-	  a.update('fails');
+	  a.update('fails :-(');
 	}
       });
     });
