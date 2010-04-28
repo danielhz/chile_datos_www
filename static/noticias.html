@@ -15,7 +15,7 @@
   <link href="stylesheets/default.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="javascripts/prototype.js">
   </script>
-  <script type="text/javascript" src="javascripts/noticias.js">
+  <script type="text/javascript" src="javascripts/default.js">
   </script>
 </head>
 
@@ -33,11 +33,25 @@ href="proyectos.html">Proyectos</a> <a href="noticias.html">Noticias</a></div>
 <div id="abstract">
 <h1>Noticias</h1>
 <ul id="news-list">
-  <li><a href="noticias/0000001.html">noticias/0000001.html</a></li>
+  <li><a href="noticias/0000001.html">Gobierno Holandés abre las puertas a
+    CC0</a></li>
 </ul>
 </div>
 
-<div id="content"></div>
+<div id="content">
+
+<div about="http://chile-datos.degu.cl/noticias/0000001.html" class="news">
+<h2 property="dc:title">Gobierno Holandés abre las puertas a CC0</h2>
+
+<div class="news-info">
+Publicado en <span id="date" property="dc:date">28 de Abril de 2010</span> por
+<span id="creator" property="dc:creator">Daniel Hernández</span></div>
+
+<p property="dc:description">Con el nuevo esquema de licenciamiento los ciudadanos holandeses tendrán un mejor acceso a la información pública. Un caso distinto es el de Chile.</p>
+
+<div style="float:right"><a rel="dc:source" href="http://chile-datos.degu.cl/noticias/0000001.html">[leer más]</a></div>
+</div>
+</div>
 </div>
 
 <div id="footer">
@@ -47,19 +61,15 @@ href="http://creativecommons.org/licenses/by-sa/2.0/cl">CC
 Atribución-Licenciar Igual 2.0 Chile</a>. Los códigos de este sitio también
 se encuentran disponibles para ser revisados y mejorados en un <a
 href="http://github.com/danielhz/chile_datos_www">repositorio git</a>.</p>
-
 </div>
-
 <!-- script google analytics -->
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script>
 <script type="text/javascript">
 try {
 var pageTracker = _gat._getTracker("UA-16108623-1");
 pageTracker._trackPageview();
 } catch(err) {}</script>
-
 </body>
 </html>
