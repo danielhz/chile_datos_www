@@ -131,3 +131,7 @@ table.eqnarray col.rightside {
    font-family: serif;
    border-top: 1px solid #ccc;
 }
+
+#disqus_thread {
+   margin-top: 40px;
+}
