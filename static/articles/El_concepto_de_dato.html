@@ -31,13 +31,13 @@ class="current-node">Recursos</a> </div>
 <div id="abstract">
 <h1>El concepto de dato</h1>
 
-<p>Habitualmente hablamos de datos, estructuras de datos, bases de datos y, a
-pesar de lo heterogéneo de éstos, a todas estas unidades de información las
-llamamos datos. En principio podríamos preguntarnos si cualquier pieza de
-información escrita en un lenguaje preciso o formal podría ser considerada un
-dato, o si esta clasificación estaría reservada sólo a una clase particular.
-De este modo, en este artículo propondremos un definición para el término
-dato.</p>
+<p>Habitualmente hablamos de datos, tipos de datos, estructuras de datos, bases
+de datos y, a pesar de lo heterogéneo de éstos, a todas estas unidades de
+información las llamamos datos. En principio podríamos preguntarnos si
+cualquier pieza de información escrita en un lenguaje preciso o formal podría
+ser considerada un dato, o si esta clasificación estaría reservada sólo a
+una clase particular. Para llegar a un acuerdo, en este artículo propondremos
+un definición para el término dato.</p>
 </div>
 
 <div id="content">
@@ -48,25 +48,27 @@ unidades de información son las llamadas fórmulas, por ejemplo:</p>
 <p style="text-align:center;margin-left:auto;margin-right:auto;">(∄ n)(
 n&gt;2 ∧ (∃ a,b,c)( a<sup>n</sup> + b<sup>n</sup> = c<sup>n</sup> ) )</p>
 
-<p>A algunos nos parece que esta fórmula es demasiado compleja para ser
-llamada un dato. Por otro lado, lo más simple es tomar un simple valor, como
-24. Sin embargo a mi me parece que 24 tampoco es un dato.</p>
+<p>A algunos les parece que esta fórmula es demasiado compleja para ser
+llamada un dato. Por otro lado, a algunos nos parece un número como 24 tampoco
+es un dato. Podría ser un dato “entraron 24 personas”, pero sólo 24, me
+parece que no.</p>
 
-<p>En este tipo de discusiones a menudo nos hacemos la pregunta de si realmente
-existe un límite para entre lo que es dato y lo que no es dato, o si de
-encontrarlo, nos sería útil para algo. Comencemos pensando en los requisitos
-de que debiera cumplir algo que sea llamado dato:</p>
+<p>En este tipo de discusiones a menudo nos detenemos y nos preguntamos si
+realmente podemos definir un límite entre lo que es dato y lo que no lo es, de
+manera que nos sea útil para algo. Entonces, para salir del embrollo,
+comenzamos a pensar en los requisitos que debiera cumplir algo para ser llamado
+dato:</p>
 <ol>
   <li><strong>Ser caracterizable como verdadero o falso</strong>. En particular
     nos interesa saber si un dato es verdadero o si el dato es falso. Por ello
     anteriormente descartamos 24 como un dato. No obstante, una afirmación
     sobre el 24 podría ser un dato, “hoy hubo una máxima de 24 grados” es
-    un dato, porque podríamos decir si es verdadero o falso. Por ejemplo, en
-    las bases de datos relacionales nos encontramos también con esta
-    semántica, si tenemos una tabla A con solo una columna y una de las filas
-    tiene el valor 24 ello significa que A(24) es verdadero. Podemos ver a A
-    como la fórmula lógica que se hace verdadera cada vez el término que
-    hace de argumento se encuentre registrado en la tabla.</li>
+    un dato, porque podríamos decir si es verdadero o falso. En el caso de las
+    bases de datos relacionales nos encontramos también con esta semántica,
+    si tenemos una tabla A con solo una columna y una de las filas tiene el
+    valor 24 ello significa que A(24) es verdadero. En este caso podemos ver a
+    A como la fórmula lógica que se hace verdadera con aquellos términos que
+    se encuentran registrados en la tabla.</li>
   <li><strong>Ser una pieza minimal</strong>. Ciertas composiciones de datos no
     debieran ser consideradas también un dato. Por ejemplo, si P y Q son
     datos, entonces la fórmula P∧Q no debiera ser considerada un dato.</li>
@@ -80,15 +82,15 @@ de que debiera cumplir algo que sea llamado dato:</p>
     contenida en las bases de datos actuales.</li>
 </ol>
 
-<h2>Concepto de datos propuesto</h2>
+<h2>Estructura de los datos</h2>
 
-<p>Un dato será, dentro de esta propuesta, una fórmula evaluada A(x) que
-puede ser caracterizable como verdadera o falsa. Sin pérdida de generalidad,
-se considerará que A es una fórmula que posee un único argumento, pero su
-argumento podrá ser una estructura que permitirá que en la práctica sea
-utilizada como si fuera una fórmula n-aria e incluso variádica. Para
-caracterizar la naturaleza del argumento x utilizaremos la siguiente gramática
-libre de contexto:</p>
+<p>La estructura de un dato será, dentro de esta propuesta, una fórmula
+evaluada A(x) que puede ser caracterizable como verdadera o falsa. Sin pérdida
+de generalidad, se considerará que A es una fórmula que posee un único
+argumento, pero su argumento podrá ser una estructura que permitirá que en la
+práctica sea utilizada como si fuera una fórmula n-aria e incluso variádica.
+Para caracterizar la naturaleza del argumento x utilizaremos la siguiente
+gramática libre de contexto:</p>
 
 <p><strong>Definición</strong> (Conjunto de argumentos): Dado un conjunto de
 términos T, el conjunto de argumentos G(T) queda definido mediante la
@@ -103,18 +105,18 @@ representa a los posibles elementos de T.</p>
     <tr>
       <td>X</td>
       <td>→</td>
-      <td>ε | A | A<code>,</code>F</td>
+      <td>ε | A | A<code>,</code>X</td>
     </tr>
     <tr>
       <td>A</td>
       <td>→</td>
       <td><code>t</code> | <code>t</code><code>:</code>A |
-        <code>(</code>A<code>,</code>F<code>)</code></td>
+        <code>(</code>A<code>,</code>X<code>)</code></td>
     </tr>
   </tbody>
 </table>
 
-<p>De este modo, ejemplos de datos serán A(<code>a:b,c</code>),
+<p>De este modo, ejemplos de datos serán A(<code>a:b,(c,a)</code>),
 A(<code>a:(b,c)</code>) y A(<code>a,b,c</code>). Además, los datos fueron
 escritos de este modo para codificar las estructuras de árboles.</p>
 
@@ -128,9 +130,9 @@ escritos de este modo para codificar las estructuras de árboles.</p>
     <tr>
       <td><code>·<br />
         / \<br />
-        a  c<br />
-        |   <br />
-        b   </code></td>
+        a  ·<br />
+        /  / \<br />
+        b  c   a</code></td>
       <td><code>·<br />
         |<br />
         a<br />
@@ -149,7 +151,7 @@ escritos de este modo para codificar las estructuras de árboles.</p>
     </tr>
     <tr>
       <th
-        style="border-top: 1px dotted black; padding-top: 4px;"><code>a:b,c</code></th>
+        style="border-top: 1px dotted black; padding-top: 4px;"><code>a:b,(c,a)</code></th>
       <th
         style="border-top: 1px dotted black; padding-top: 4px;"><code>a:(b,c)</code></th>
       <th
@@ -161,44 +163,183 @@ escritos de este modo para codificar las estructuras de árboles.</p>
   </tbody>
 </table>
 
-<p>El punto en los árboles es un símbolo especial para marcar la raíz.
-También hay que notar que estos árboles son estructuras ordenadas, es decir,
-importa el orden de izquierda a derecha en el que ponemos las ramas que salen
-de cada nodo.</p>
+<p>El punto en los árboles es un símbolo especial que podríamos llamar
+“nodo blanco”. También hay que notar que estos árboles son estructuras
+ordenadas, es decir, importa el orden de izquierda a derecha en el que ponemos
+las ramas que salen de cada nodo.</p>
 
-<p><strong>Definición</strong> (profundidad de un dato): Llamaremos
-profundidad de un dato A(x) a la altura del árbol correspondiente a x menos
-1.</p>
-
-<p>Por ejemplo las alturas de A(<code>a:b,c</code>), A(<code>a:(b,c)</code>),
-A(<code>a,b,c</code>) y A() son respectivamente 2, 2, 1, 3 y 0.</p>
+<h2>Algo más que estructura</h2>
 
 <p>Almacenar datos no tendría sentido si no pudieramos hacer nada con ellos.
-En la práctica, hablamos de consultas cuando nos referimos a ciertas funciones
-que nos permiten hacer uso de los datos, extrayendo más datos. También
-hablamos de lenguajes de consulta cuando nos referimos a lenguajes que permiten
-codificar estas funciones, como por ejemplo SQL, SPARQL, MQL, XQuery.</p>
+Definimos las estructuras de datos para representar algo. Almacenamos un
+montón de dichas estructuras para que, nosotros o alguien más haga algo. Para
+ello ese alguién deberá conocer lo que esas estructuras representan. En la
+práctica acumulamos una gran cantidad de datos para luego consultarlos. Pero
+cuando los datos son demasiados y su naturaleza es compleja, lo que necesitamos
+es que estas consultas se comporten como funciones que operan sobre los datos
+almacenados extrayendo otros datos, que probablemente representan una visión
+simplificada, y por ende manejable, de lo que queremos observar. Hablamos de
+lenguajes de consulta cuando nos referimos a lenguajes que permiten codificar
+estas funciones, como por ejemplo SQL, SPARQL, MQL, XQuery, etc.</p>
 
-<p>No obstante, una consulta no debiera ser cualquier función que nos lleve de
-un conjunto de datos a otro conjunto de datos. Debe cumplir el requerimiento de
-ser simple en términos de complejidad computación. Tanto los axiomas de la
-aritmética como el teorema de fermat son codificable como un dato, porque su
-estructura sintáctica es en forma de árbol. Sin embargo, la función para
-obtener el Teorema de Fermat a partir de los axiomas no es trivial.</p>
+<p>Entonces, volviendo a la cuestion de qué son los datos, resulta razonable
+que las estructuras solas no son datos, se requiere que tengan un significado.
+Una primera definición intuitiva de datos sería el de estructuras con
+semántica, donde semántica significaría que una persona pueda interpretarlos
+y compartir con otros sus interpretaciones. No obstante, en estricto rigor no
+podemos saber lo que ocurre en la mente de las demás personas y por ello
+muchas veces queremos formalizar los conceptos. De ello surgen modelos formales
+con los cuales podríamos modelar el mundo que queremos describir y luego
+relacionar los datos con significados dentro de ese modelo formal. De este
+modo, teniendo un modelo formal M y una interpretación <code>I</code> que nos
+convierta nuestras estructuras de la forma A(x) en fórmulas lógicas dentro
+del modelo M, podríamos hablar que cada una de esas estructuras son datos. Es
+decir, para hablar de datos necesitamos no sólo estructuras, si no también
+una semántica.</p>
 
-<p>De este modo, el concepto de dato no tiene sentido si no se lo asocia a una
-interpretación, y la interpretación viene dada por las consultas. Así
-tenemos una nueva definición para los datos:</p>
+<h2>Estructuras consultables</h2>
 
-<p><strong>Definición</strong> (datos): Dado un sistema de datos S = (F, T,
-Q), donde F es un conjunto de predicados de fórmulas, T es un conjunto de
-términos y Q es un conjunto de consultas simples, llamaremos datos del sistema
-S a las fórmulas A(x) donde A∈F y x∈G(T).</p>
+<p>Independiente de la semántica de las estructuras, aquello que las convierte
+en datos, en la práctica lo que necesitamos es obtener más de estas
+estructuras mediante una consulta.</p>
 
-<p>La definición anterior queda abierta, al no especificar aún lo que
-significa consultas simples.</p>
+<p><strong>Definición</strong> (sistema consultable): Llamaremos un sistema
+consultable S, a una tupla (F, T, Q), donde F es un conjunto de predicados de
+fórmulas, T es un conjunto de términos y Q es un conjunto de consultas,
+llamaremos datos del sistema S a las fórmulas A(x) donde A∈F y x∈G(T).</p>
 
-<h2>Elementos opacos y no tan opacos</h2>
+<p>Entre los requerimientos iniciales para definir el concepto de dato,
+incluímos que las consultas no debieran ser suficientemente simples en
+términos de complejidad computacional. Tanto los axiomas de la aritmética
+como el teorema de fermat son codificable como un dato, porque su estructura
+sintáctica es en forma de árbol. Sin embargo, la función para obtener el
+Teorema de Fermat a partir de los axiomas no es trivial. No obstante, omitamos
+esta discusión de la complejidad.</p>
+
+<h2>Datos estructurados, semi-estructurados y desestructurados</h2>
+
+<p>El concepto de datos estructurados, semi-estructurados y desestructurados se
+ha hecho habitual en la literatura. Peter Wood hace una distinción de ellos en
+<a href="http://www.dcs.bbk.ac.uk/~ptw/teaching/ssd/toc.html">sus apuntes para
+un curso</a>.</p>
+
+<p>Según Peter Wood, los <a
+href="http://www.dcs.bbk.ac.uk/~ptw/teaching/ssd/slide1.html">datos
+desestructurados</a> se caracterizarían por no tener restricciones de tipos,
+no seguir un formato o secuencia, no seguir reglas y no ser predecibles. En
+primera instancia no me queda claro que significan estas caracterísitcas.
+Luego, con los ejemplos, me parecen un poco más contradictorias. Ejemplos de
+datos no estructurados serían el texto, el video, el sonido y las imágenes. A
+mi me parece que ese tipo de documentos si siguen un formato, porque si no, no
+podría escuchar musica en un reproductor.</p>
+
+<p>Los <a href="http://www.dcs.bbk.ac.uk/~ptw/teaching/ssd/slide2.html">datos
+estructurados</a> se caracterizarían por organizarse en paquetes representando
+un concepto (entidades), las entidades similares son agrupadas (relaciones o
+clases), las entidades de una misma clase poseen las mismas descripciones
+(atributos) y los atributos similares de las entidades de una misma clase
+comparten el formato, el largo, se encuentran todos presentes y siguen el mismo
+orden.</p>
+
+<p>Finalmente, <a
+href="http://www.dcs.bbk.ac.uk/~ptw/teaching/ssd/slide3.html">los datos
+semi-estructurados</a> se caracterizarían, al igual que los estructurados, por
+organizarse en entidades agrupadas en clases, pero a diferencia de ellos, las
+entidades podrían tener atributos distintos, el orden de los atributos podría
+variar, no todos los atributos serían requeridos, el tamaño de los atributos
+podría diferir y el tipo de los atributos podría diferir.</p>
+
+<p>Dejando fuera los conceptos de datos desestructurados podemos apreciar que
+de las definiciones de los otros dos tipos se desprenden los siguientes
+conceptos:</p>
+<ul>
+  <li>Agrupación de datos en entidades.</li>
+  <li>Agrupación de entidades en clases.</li>
+  <li>Atributos comunes en las entidades de una clase.</li>
+  <li>Orden de los atributos de una clase.</li>
+  <li>Obligatoriedad de los atributos.</li>
+  <li>Tamaño fijo para cada atributo.</li>
+  <li>Formato fijo para cada atributo.</li>
+</ul>
+
+<p>Habitualmente las bases de datos relacionales son calificadas como datos
+estructurados, aunque los atributos podrían no ser obligatorios cuando ponemos
+un valor nulo y hay tipos de tamaño variable, como por ejemplo, el texto.</p>
+
+<p><strong>Definición</strong> (profundidad de un dato): Llamaremos
+profundidad de un dato asociado a una fórmula A(x) a la altura del árbol
+correspondiente a x menos 1.</p>
+
+<p>Por ejemplo las alturas de A(<code>a:b,(c,a)</code>),
+A(<code>a:(b,c)</code>), A(<code>a,b,c</code>), A(<code>a:b:c</code>) y A() son
+respectivamente 2, 2, 1, 3 y 0.</p>
+
+<p><strong>Definición</strong> (tipos de terminales): Un sistema de tipos se
+define mediante una tupla (C,T) donde C es el conjunto de tipos, T es el
+conjunto de terminales y (∀t∈T)(∃c∈C)(t∈c).</p>
+
+<p>Si bien se exige que los que todo terminal tenga un tipo, no necesariamente
+se exige que éste sea único.</p>
+
+<p><strong>Definición</strong> (igualdad de estructura): Dados dos datos
+definidos usando un mismo sistema de tipos, se dirá que son iguales en
+estructura cuando los árboles asociados poseen estructuras equivalentes y
+cuando todos los pares de terminales asociados a los nodos de dichos árboles,
+tomando uno de cada árbol y en la misma posición, pertenezcan a un mismo tipo
+en común.</p>
+
+<p>Intentando retomar el concepto de datos estructurados, un conjunto de datos
+A(x) podría llamarse estructurado cuando los argumentos x de una misma
+fórmula A, sean todos iguales en estructura. En algunos casos A representará
+una clase y en otros una relación. La definición de Peter Wood exige además,
+que los tipos de dato tengan un tamaño fijo, pero en nuestro caso podríamos
+no preocuparnos de estos tamaños.</p>
+
+<h2>Términos opacos y no tan opacos</h2>
+
+<p>Hasta el momento se ha hablado de los términos, como elementos asociados a
+los nodos de una estructura en forma de árbol. El lenguaje de consulta debiera
+operar sobre conjuntos de estas estructuras, pero no hemos dicho nada sobre la
+posibilidad de analizar que hay dentro de estos términos, si éstos, a su vez
+poseen alguna estructura interna o si existen relaciones entre ellos.</p>
+
+<p>En el caso de que el lenguaje de consulta sólo pueda verificar si dos
+términos son iguales, pero nada más que eso, diremos que los términos son
+opacos. En el caso que el lenguaje de consulta pueda acceder a atributos
+internos de los términos, operar sobre los terminales o realizar comparaciones
+de orden entre ellos, diremos que no son opacos.</p>
+
+<p>En general los lenguajes de consulta no consideran a los términos como
+elementos opacos. Existen numerosas funciones que nos permiten obtener valores
+agregados de varios elementos, como avg, sum, min, etc. y operadores que nos
+permiten filtrar los datos en una consulta, como &gt; o &lt;.</p>
+
+<p>En la sección anterior se mencionó el concepto de datos opacos. La idea
+fue definir un el concepto de datos de la forma más sencilla posible, por lo
+que introducir la complejidad interna de sus tipos parecía no recomendable a
+ese nivel de discusión. En las bases de datos no trabajan con elementos
+opacos.</p>
+
+<h2>Restricciones sobre los datos</h2>
+
+<p>Los datos son restringidos para ser consecuentes con lo que están
+modelando. Hay restricciones que tienen que ver con la estructura de los datos,
+como por ejemplo, si queremos tener un dato como “X es el autor de Y”,
+podría tener sentido que X sea una persona e Y un libro, pero quizá no tenga
+sentido que X sea una ciudad y que Y sea una fecha. Por otra parte, también
+hay restricciones que se aplican sobre varios datos, como por ejemplo, una
+persona no puede tener más de una madre. En algunos casos, como en CouchDB,
+hay un tipo de validación algo distinto, que guarda relación con modificar un
+dato. Para ello la función validación toma como argumentos el dato antiguo,
+el nuevo dato y el usuario que hace la actualización. Ello podría extenderse
+a una modificación sobre el conjunto de datos completo, considerando en vez de
+el dato original y el modificado, como el conjunto de </p>
+
+<p>En la mayoría de los datos las restricciones son llamadas re</p>
+
+<p>H(D) -&gt; v/f</p>
+
+<p>H(d;D) -&gt; v/f</p>
 
 <h2>Datos vs hechos en las cláusulas de Horn</h2>
 

@@ -9,7 +9,10 @@ function identifyCurrentNode() {
   var about = $$('body')[0].readAttribute('about');
   if (about != null) {
     var selector = '#site-menu a[href="' + removeBaseURL(about) + '"]';
-    $$(selector)[0].addClassName('current-node');
+    var currentNode = $$(selector)[0];
+    if (currentNode != null) {
+      currentNode.addClassName('current-node');
+    }
   }
 }
 
