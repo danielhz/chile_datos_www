@@ -151,3 +151,22 @@ div.news h2 {
 #disqus_thread {
    margin-top: 40px;
 }
+
+table.data-description {
+   border: 2px solid #aaa;
+}
+table.data-description td {
+   padding: 2px 6px 2px 6px;
+   border: 1px solid #bbb;
+   background-color: #eee;
+}
+
+table.data-description tr.redundante td {
+   color: #666;
+}
+
+table.ficha-proyecto td {
+   padding: 2px 6px 2px 6px;
+   border: 1px solid #bbb;
+   background-color: #eee;
+}

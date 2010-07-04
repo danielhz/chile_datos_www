@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
+      "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:owl="http://www.w3.org/2002/07/owl#"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+ xmlns:foaf="http://xmlns.com/foaf/0.1/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>Iniciativa Chile Datos - Proyectos</title>
+  <meta name="generator" content="Amaya, see http://www.w3.org/Amaya/" />
+  <link href="../../stylesheets/default.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../../javascripts/prototype.js">
+  </script>
+  <script type="text/javascript" src="../../javascripts/default.js">
+  </script>
+</head>
+
+<body about="http://chile-datos.degu.cl/proyectos.html">
+
+<div id="header">
+<a href="index.html">Iniciativa Chile Datos</a> </div>
+
+<div id="site-menu">
+<a href="../../index.html">Inicio</a> <a
+href="../../participa.html">Participa</a> <a href="../../proyectos.html"
+class="current-node">Proyectos</a> <a
+href="../../noticias.html">Noticias</a></div>
+
+<div id="main">
+
+<div id="abstract">
+<h1>SEIA Data</h1>
+
+<p>SEIA Data es una colección de herramientas para descargar, depurar y
+republicar los datos que publica el Sistema de Evaluación de Impacto
+Ambiental, con el fin de que puedan ser reutilizados e integrados con otras
+fuentes de datos.</p>
+
+<p>Cualquier aporte tanto en código como en ideas es bienvenido.</p>
+
+<table class="ficha-proyecto" border="0" style="width: 100%">
+  <caption>Ficha del proyecto</caption>
+  <col />
+  <col />
+  <tbody>
+    <tr>
+      <td>Autor</td>
+      <td>Daniel Hernández</td>
+    </tr>
+    <tr>
+      <td>Repositorio de código</td>
+      <td><a href="http://github.com/danielhz/seia_data">gibhub
+      seia_data</a></td>
+    </tr>
+    <tr>
+      <td>Tipo de repositorio</td>
+      <td>Git</td>
+    </tr>
+    <tr>
+      <td>Licencia</td>
+      <td>Libre (GPL v3)</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div id="content">
+<h2 id="r01">Qué es SEIA</h2>
+
+<p>SEIA es un acrónimo de para Servicio de Evaluación de Impacto Ambiental,
+una organización que depende de la Comisión Nacional de Medio Ambiente
+(CONAMA).</p>
+
+<h2 id="r02">Qué datos publica SEIA</h2>
+
+<p>SEIA, en su sitio web <a href="https://www.e-seia.cl/">E-SEIA</a>, publica
+la documentación relativa a los procesos de evaluación ambiental por los que
+están obligados a pasar una amplia gama de proyectos a nivel nacional. Esta
+documentación incluye el título del proyecto, el tipo de proyecto (presa,
+acueducto, aeropuerto,...), el sector productivo (agropecuario, energía,
+equipamiento, forestal,...), el monto de la inversión, la región y
+coordenadas geográficas, información del titular del proyecto, su
+representante legal, asesores y los responsables dentro de la autoridad
+pública (CONAMA) de evaluar el proyecto. Además, se adjuntan los calendarios
+para eventos futuros y pasados dentro del proceso de evaluación. Así, se
+entregan las fechas límites para entrega de documentos tanto por parte del
+titular del proyecto como por parte de la ciudadanía. Los documentos
+entregados por el titular, la ciudadanía y los evaluadores son adjuntados a la
+ficha del proyecto, desde donde también pueden ser descargados. En el proceso
+de evaluación los proyectos pasan por varios estados, asociados a los eventos,
+desde que éstos son presentados hasta que son aceptados, rechazados o
+desistidos.</p>
+
+<p>En una primera instancia, luego de buscar por proyectos, pero sin colocar
+ningún tipo de filtro, obtenemos una lista de los proyectos dentro de el
+sistema, dividida en una serie de páginas. Cada página contiene una tabla con
+proyectos con la siguiente información para cada uno de ellos:</p>
+
+<table class="data-description" border="0" style="width: 100%">
+  <caption>Lista de proyectos</caption>
+  <col />
+  <col />
+  <tbody>
+    <tr>
+      <th>Propiedad</th>
+      <th>Descripción</th>
+    </tr>
+    <tr>
+      <td>título</td>
+      <td>Título con el cual se presenta un proyecto.</td>
+    </tr>
+    <tr>
+      <td>uri</td>
+      <td>La dirección de la ficha técnica del proyecto en el sitio web de
+        SEIA, que es obtenida del enlace en la página de la lista de
+      proyectos.</td>
+    </tr>
+    <tr>
+      <td>inversión</td>
+      <td>El monto en millones de dólares en los que se estima la inversión
+        necesaria para desarrollar el proyecto.</td>
+    </tr>
+    <tr>
+      <td>estatus</td>
+      <td>La situación actual dentro del procedimiento en la que se encuentra
+        el proyecto. En la lista de proyectos los estados son: 
+        <dl>
+          <dt>En Calificación</dt>
+            <dd>Cuando un proyecto ha sido recientemente ingresado</dd>
+          <dt>Aprobado</dt>
+            <dd>Cuando es aprobado, es decir, el proyecto queda autorizado para
+              ser implementado.</dd>
+          <dt>Rechazado</dt>
+            <dd>Cuando es rechazado, es decir, el proyecto no queda autorizado
+              para su realización.</dd>
+          <dt>No Admitido a Tramitación</dt>
+            <dd>Cuando hay problemas en los documentos presentados o en la
+              forma de la presentación, por ejemplo, cuando se requerían tres
+              copias y sin embargo se envió sólo una.</dd>
+          <dt>Desistido</dt>
+            <dd>Cuando el titular desiste del proyecto y, por ende, de
+              continuar con el proceso de evaluación.</dd>
+          <dt>No calificado</dt>
+            <dd>Hay que consultarlo, porque se parece a no admitido a
+              tramitación.</dd>
+          <dt>Revocado</dt>
+            <dd>Por el momento existe sólamente un proyecto no revocado y se
+              trata de un proyecto al cual se le había aceptado el proyecto,
+              pero luego no cumplió con las normas en la ejecusión de este y
+              , por consiguiente, el permiso le fue revocado.</dd>
+        </dl>
+
+        <p>Aun falta claridad sobre el significado de los estados, lo que
+        implica la necesidad de investigarlo. Además, es necesario conocer el
+        flujo por el que puede pasar un proyecto entre los estados.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>tipo de proyecto</td>
+      <td>Clasifica los proyectos en relación a lo que hacen, por ejemplo, si
+        se trata de la construcción de una presa o de una línea eléctrica.
+        Los valores guardados son códigos compuestos de una letra que puede ir
+        seguida de un número.</td>
+    </tr>
+    <tr>
+      <td>fecha de presentación</td>
+      <td>La fecha en la que el proyecto es ingresado en el sistema de
+        evaluación de impacto ambiental.</td>
+    </tr>
+    <tr>
+      <td>titular</td>
+      <td>La organización o persona que ostenta el título del proyecto.</td>
+    </tr>
+    <tr>
+      <td>tipo de presentación</td>
+      <td>Existen dos maneras en la que un proyecto puede ser presentado:
+        mediante una declaración de impacto ambiental (DIA) o mediante una
+        evaluación de impacto ambiental (EIA). Los valores guardados son las
+        palabras “DIA” o “EIA”.</td>
+    </tr>
+    <tr>
+      <td>región</td>
+      <td>Corresponde a un área geográfica en la que está políticamente
+        dividido el territorio de Chile.</td>
+    </tr>
+    <tr>
+      <td>id</td>
+      <td>Las URI asociadas a los proyectos incluyen un parámetro llamado
+        id_expediente. Dicho parámetro es un número entero que sirve para
+        identificar al proyecto y que probablemente corresponde a un
+        identificador usado en la base de datos interna desde donde proviene la
+        información.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Al acceder a la ficha de uno de los proyectos podemos obtener la
+información que se encuentra acontinuación. La información que ya se tenía
+de la lista se marca en color gris.</p>
+
+<table class="data-description" border="0" style="width: 100%">
+  <caption>Ficha de proyecto</caption>
+  <col />
+  <col />
+  <tbody>
+    <tr>
+      <th>Propiedad</th>
+      <th>Descripción</th>
+    </tr>
+    <tr class="redundante">
+      <td>título</td>
+      <td>Título con el cual se presenta un proyecto. Es el mismo que aparece
+        en la lista de proyectos.</td>
+    </tr>
+    <tr class="redundante">
+      <td>inversión</td>
+      <td>El monto en millones de dólares en los que se estima la inversión
+        necesaria para desarrollar el proyecto. Corresponde a lo que aparece en
+        la lista de proyectos.</td>
+    </tr>
+    <tr class="redundante">
+      <td>estatus</td>
+      <td>La situación actual dentro del procedimiento en la que se encuentra
+        el proyecto. Es la misma que aparece en la lista de proyectos.</td>
+    </tr>
+    <tr class="redundante">
+      <td>tipo de proyecto</td>
+      <td>Corresponde a la clasificación de tipo de proyecto que aparece en la
+        lista, sólo que ahora se usa la descripción del tipo de proyecto en
+        vez del código correspondiente.</td>
+    </tr>
+    <tr>
+      <td>titular 
+
+        <p>consultora</p>
+
+        <p>representante legal</p>
+
+        <p>consultor</p>
+      </td>
+      <td>El titular corresponde a la empresa o persona que es dueño del
+        proyecto, cuyo nombre aparecía en la lista de proyectos. La consultora
+        y consultor, podrían ser quienes asesoran al titular (hay que
+        confirmarlo). Al parecer, la diferencia entre una consultora y un
+        consultor es que la primera es una empresa y el segundo es un
+        profesional. El representante legal es quien representa al titular para
+        el caso del presentación del proyecto. 
+
+        <p>Estas cuatro propiedades pueden son a veces opcionales y pueden
+        aparecer con los siguientes datos internos:</p>
+
+        <table class="data-description" border="0" style="width: 100%">
+          <caption>Datos de una persona u organización</caption>
+          <col />
+          <col />
+          <tbody>
+            <tr>
+              <th>Propiedad</th>
+              <th>Descripción</th>
+            </tr>
+            <tr>
+              <td>nombre</td>
+              <td>Nombre completo de una persona natural o razón social si es
+                el caso de una persona jurídica.</td>
+            </tr>
+            <tr>
+              <td>domicilio</td>
+              <td>Nombre de la calle y número. Estos datos son entregados en
+                una misma frase, por lo que podría ser recomendable depurar.
+                Además, no se ha corroborado que en algunos casos no se haya
+                ingresado mayor información.</td>
+            </tr>
+            <tr>
+              <td>ciudad</td>
+              <td>La ciudad asociada al domicilio.</td>
+            </tr>
+            <tr>
+              <td>teléfono</td>
+              <td>El número telefónico de la persona u organización.</td>
+            </tr>
+            <tr>
+              <td>fax</td>
+              <td>El número de fax de la persona u organización.</td>
+            </tr>
+            <tr>
+              <td>emails</td>
+              <td>Uno o más emails asociados a la persona u organización.
+                Normalmente están separados por comas y espacios, pero aún no
+                se ha revisado si hay casos en los que pudieran presentarse de
+                otro modo.</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>encargado</td>
+      <td>Corresponde al funcionario de CONAMA que se encuentra a cargo de la
+        evaluación del proyecto. De el se tienen los siguientes datos: 
+
+        <table class="data-description" border="0" style="width: 100%">
+          <caption>Datos del encargado de la evaluación</caption>
+          <col />
+          <col />
+          <tbody>
+            <tr>
+              <th>Propiedad</th>
+              <th>Descripción</th>
+            </tr>
+            <tr>
+              <td>nombre</td>
+              <td>Nombre completo de la persona.</td>
+            </tr>
+            <tr>
+              <td>email</td>
+              <td>Dirección de correo electrónico de la persona.</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>descripción</td>
+      <td>Varios párrafos de texto a modo de descripción del proyecto.</td>
+    </tr>
+    <tr>
+      <td>eventos</td>
+      <td>Lista de eventos en el flujo del proceso de evaluación de un
+        proyecto. Los eventos están asociados a entrega de documentos y suelen
+        cambiar el estado del proyecto. Los datos de los eventos son: 
+
+        <table class="data-description" border="0" style="width: 100%">
+          <caption>Datos de eventos de un proceso de evaluación</caption>
+          <col />
+          <col />
+          <tbody>
+            <tr>
+              <th>Propiedad</th>
+              <th>Descripción</th>
+            </tr>
+            <tr>
+              <td>estatus</td>
+              <td>Estado con el que el proceso queda luego de la ocurrencia del
+                evento.</td>
+            </tr>
+            <tr>
+              <td>documento</td>
+              <td>Documento asociado al evento, por ejemplo, el documento de
+                presentación del proyecto y el documento de aprobación o
+                rechazo por parte de CONAMA.</td>
+            </tr>
+            <tr>
+              <td>número</td>
+              <td>Un código de la forma 123/2010, donde 123 es un folio y 2010
+                corresponde al año en el cual ocurrió el evento.</td>
+            </tr>
+            <tr>
+              <td>fecha</td>
+              <td>La fecha en la que ocurre el evento.</td>
+            </tr>
+            <tr>
+              <td>autor</td>
+              <td>El autor del documento asociado al evento. Por ejemplo, si el
+                documento es una respuesta por una división regional de
+                CONAMA, el autor podría ser: Comisión Nacional del Medio
+                Ambiente, Magallanes y Antártica Chilena.</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>fecha de publicación en el diario oficial</td>
+      <td>Fecha en la que la propuesta de un proyecto ha sido publicada en el
+        diario oficial (si es que ha sido publicada).</td>
+    </tr>
+    <tr>
+      <td>fecha de publicación en diario de circulación local o regional</td>
+      <td>Fecha en la que la propuesta de un proyecto ha sido publicada en un
+        diario de circulación local o regional (si es que ha sido
+      publicada).</td>
+    </tr>
+    <tr>
+      <td>participación ciudadana</td>
+      <td>Fecha límite para que la ciudadanía presente observaciones a un
+        proyecto.</td>
+    </tr>
+    <tr>
+      <td>efectos</td>
+      <td>Uno o más párrafos describiendo los efectos ambientales del
+        proyecto.</td>
+    </tr>
+    <tr class="redundante">
+      <td>tipo de presentación</td>
+      <td>Corresponde a tipo de presentación que aparece en la lista, salvo
+        que en vez de DIA se escribe Declaración de Inpacto Ambiental y en vez
+        de EIA se escribe Evaluación de Implacto ambiental.</td>
+    </tr>
+    <tr class="redundante">
+      <td>id</td>
+      <td>Corresponde a la id que se obtuvo de la lista y sirve para hacer el
+        link entre la información asociada a un mismo proyecto.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>También existe un archivo KMZ del cual es posible extraer las coordenadas
+geográficas de todos los proyectos resultantes de la búsqueda.</p>
+
+<table class="data-description" border="0" style="width: 100%">
+  <caption>Datos que no están en las fichas</caption>
+  <col />
+  <col />
+  <tbody>
+    <tr>
+      <th>Propiedad</th>
+      <th>Descripción</th>
+    </tr>
+    <tr class="redundante">
+      <td>título</td>
+      <td>El título del proyecto, que es el mismo que aparece en la lista.</td>
+    </tr>
+    <tr class="redundante">
+      <td>uri</td>
+      <td>La uri del proyecto, esto nos permite asociarlo a los datos de la
+        ficha.</td>
+    </tr>
+    <tr>
+      <td>cordenadas</td>
+      <td>Un par de números que indican un pundo donde se encuentra el
+        proyecto, por ejemplo -74.316329956055,-44.458780108825.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Existen otros datos que no están en las fichas, como el sector productivo.
+No obstante, el sector productivo se puede obtener si se descarga el excel
+asociado a la consulta. El problema es que dicho excel sólo contiene los
+primeros 2.000 proyectos encontrados en la consulta.</p>
+
+<table class="data-description" border="0" style="width: 100%">
+  <caption>Datos que no están en las fichas</caption>
+  <col />
+  <col />
+  <tbody>
+    <tr>
+      <th>Propiedad</th>
+      <th>Descripción</th>
+    </tr>
+    <tr>
+      <td>sector productivo</td>
+      <td>El sector productivo es un párametro que se ofrece al momento de
+        hacer una consulta, pero que luego no aparece en las fichas. Toma uno
+        de siguientes valores: Agropecuario, Energía, Equipamiento, Forestal,
+        Infraestructura Idráulica, Infraestructura Portuaria, Infraestructura
+        de Transporte, Inmoviliarios, Instalaciones fabriles varias, Minería,
+        Otros, Pesca y Acuicultura, Planificación Territorial e Inmoviliarios
+        en Zonas, Saneamiento Ambiental.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="r03">Cómo obtenemos, codificamos y modelamos los datos</h2>
+
+<p>Esta es una explicación breve para que los datos puedan ser prontamente
+usados en una aplicación de demo. La explicación detallada se desarrollará
+pronto (durante estas semanas).</p>
+
+<p>En primera instancia bajamos los documentos html, luego los pasamos por
+filtros para corregir sus estructuras a modo de que sean parseables. En esta
+tarea hay un proceso manual, porque cirertos errores como los de poner comillas
+dentro de un atributo rompen completamente la estructura del documento. Luego
+convertimos los HTML en archivos YAML, y posteriormente leemos los archivos
+YAML en archivos que contienen queries en SPARQL que es enviado al endpoint
+para agregar los nuevos datos. Por el momento los datos se concentran en la
+información contenida en la lista de proyectos y es modelada de la manera que
+se explica a continuación.</p>
+
+<p>Primero debemos considerar algunos prefijos para hacer más brebe la
+descripción posterior</p>
+
+<table class="data-description" border="0" style="width: 100%">
+  <caption>Lista de proyectos a triples</caption>
+  <col />
+  <col />
+  <tbody>
+    <tr>
+      <th>Rótulo</th>
+      <th>Prefijo</th>
+    </tr>
+    <tr>
+      <td>seia</td>
+      <td>http://chile-datos.degu.cl/data/seia/1/</td>
+    </tr>
+    <tr>
+      <td>proceso</td>
+      <td>http://chile-datos.degu.cl/data/seia/1/Proceso/</td>
+    </tr>
+    <tr>
+      <td>estatus</td>
+      <td>http://chile-datos.degu.cl/data/seia/1/Estatus/</td>
+    </tr>
+    <tr>
+      <td>agente</td>
+      <td>http://chile-datos.degu.cl/data/seia/1/Agente/</td>
+    </tr>
+    <tr>
+      <td>región</td>
+      <td>http://chile-datos.degu.cl/data/seia/1/Región/</td>
+    </tr>
+  </tbody>
+</table>
+
+<p></p>
+
+<table class="data-description" border="0" style="width: 100%">
+  <caption>Lista de proyectos a triples</caption>
+  <col />
+  <col />
+  <tbody>
+    <tr>
+      <th>Propiedad</th>
+      <th>Implementación usando triples</th>
+    </tr>
+    <tr>
+      <td>id</td>
+      <td>El id permite construir una URI para el proceso de evaluación
+        asociado a un proyecto. 
+
+        <p>proceso:{id}</p>
+      </td>
+    </tr>
+    <tr>
+      <td>título</td>
+      <td>proceso:{id} seia:título "{título}" . </td>
+    </tr>
+    <tr>
+      <td>uri</td>
+      <td>proceso:{id} seia:ficha &lt;{uri}&gt; .</td>
+    </tr>
+    <tr>
+      <td>inversión</td>
+      <td>proceso:{id} seia:inversión "{inversión}"</td>
+    </tr>
+    <tr>
+      <td>estatus</td>
+      <td>Según sea el estado, se agregará uno de los triples: 
+
+        <p>proceso:{id} seia:estatus estatus:EnCalificación .<br />
+        proceso:{id} seia:estatus estatus:Aprobado .<br />
+        proceso:{id} seia:estatus estatus:Rechazado .<br />
+        proceso:{id} seia:estatus estatus:NoAdmitidoATramitación .<br />
+        proceso:{id} seia:estatus estatus:Desistido .<br />
+        proceso:{id} seia:estatus estatus:Revocado .<br />
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>tipo de proyecto</td>
+      <td>Según sea el tipo de proyecto, se agregará uno de los triples: 
+
+        <p>proceso:{id} seia:tipoProyecto tipoProyecto:{tipo del proyecto} .</p>
+
+        <p>Recordar que el tipo del proyecto es un código como “a1” o
+        “j3”.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>fecha de presentación</td>
+      <td>proceso:{id} seia:fechaPresentación "{fecha}" . 
+
+        <p>Donde la fecha debe ser codificada en el estándar de XML Schema.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>titular</td>
+      <td>Para esta asociación se prefiere crear una nueva uri para el agente
+        formada a partir del id del proyecto, a modo de evitar nodos blancos.
+        Es decir, se agregarán los triples: 
+
+        <p>proceso:{id} seia:titular titular:{id}<br />
+        titular:{id} seia:nombre "{titular}"<br />
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>tipo de presentación</td>
+      <td>Dependiendo del tipo de presentación, se agrega uno de los triples:
+
+        <p>proceso:{id} rdf:type seia:EIA<br />
+        proceso:{id} rdf:type seia:DIA</p>
+      </td>
+    </tr>
+    <tr>
+      <td>región</td>
+      <td>Según sea la región se agregará uno de los triples:
+
+        <p>proceso:{id} seia:región región:I<br />
+        proceso:{id} seia:región región:II<br />
+        proceso:{id} seia:región región:III<br />
+        proceso:{id} seia:región región:IV<br />
+        proceso:{id} seia:región región:V<br />
+        proceso:{id} seia:región región:VI<br />
+        proceso:{id} seia:región región:VII<br />
+        proceso:{id} seia:región región:VIII<br />
+        proceso:{id} seia:región región:IX<br />
+        proceso:{id} seia:región región:X<br />
+        proceso:{id} seia:región región:XI<br />
+        proceso:{id} seia:región región:XII<br />
+        proceso:{id} seia:región región:RM<br />
+        proceso:{id} seia:región región:XIV<br />
+        proceso:{id} seia:región región:XV<br />
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p></p>
+
+<h2>Qué podemos hacer con los datos</h2>
+
+<p>El SEIA presenta su información con el objetivo de que podamos buscar
+documentos de interés mediante filtrando valores en los campos de los
+proyectos. Ello deja fuera búsquedas que a alguien podrían resultarle
+interesantes y no permite consultas que requieran la integración otras
+fuentes. Además, no es posible obtener ciertos valores agregados, como
+promedios, sumas, máximos, proporciones, etc. Los siguientes puntos son una
+enumeración de ideas sobre que hacer con los datos. Cualquier otra idea es
+bienvenida.</p>
+<ul>
+  <li>Ver progresiones de los montos de inversión y cantidades de proyectos
+    por rubro, tipo de proyecto y por región.</li>
+  <li>Estudiar la variación de porcentajes entre proyectos aprovados,
+    rechazados y desistidos.</li>
+  <li>Visualizar los proyectos en los cuales haya habido cambios recientes, en
+    especial, cuando hay plazos para que la ciudadanía presente
+  observaciones.</li>
+</ul>
+
+<h2 id="r04">Problemas encontrados en la publicación de los datos</h2>
+<ul>
+  <li>Las páginas de la lista de los proyectos no es posible de ser obtenida
+    sólo de la URI, dado que también son creados a parte de elementos en la
+    sesión. No obstante esto es solucionado guardando las cookies al momento
+    de descargar las páginas.</li>
+  <li>Las páginas no son HTML válido, por ende no cualquier parser funciona.
+    No obstante Hpricot fue capaz de procesar la mayoría de las páginas.</li>
+  <li>Cuando los títulos de los proyectos contienen comillas, el HTML
+    resultante se rompe, puesto que quedan atributos mal cerrados, al utilizar
+    los títulos como un atributo.</li>
+  <li>En algunos casos se encontró un elemento h2 dentro de un tbody, lo que
+    lo hacía inparseable. Para corregir el problema, simplemente se hizo el
+    reemplazo del patrón con problemas por un patrón corregido.</li>
+  <li>Los elementos de la estructura no indican donde se ecuentran los datos,
+    así, la tarea de obtener los datos implicó buscar una palabra clave, como
+    un título y luego buscar la posción relativa dentro del árbol donde
+    podría encontrarse el dato.</li>
+</ul>
+</div>
+</div>
+
+<div id="footer">
+<p>Algunos derechos reservados © 2010 por <a href="nosotros.html">Iniciativa
+Chile Datos</a> bajo la licencia abierta <a
+href="http://creativecommons.org/licenses/by-sa/2.0/cl">CC
+Atribución-Licenciar Igual 2.0 Chile</a>. Los códigos de este sitio también
+se encuentran disponibles para ser revisados y mejorados en un <a
+href="http://github.com/danielhz/chile_datos_www">repositorio git</a>.</p>
+</div>
+<!-- script google analytics -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-16108623-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>
