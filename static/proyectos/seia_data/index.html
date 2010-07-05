@@ -512,6 +512,14 @@ descripción posterior</p>
       <td>región</td>
       <td>http://chile-datos.degu.cl/data/seia/1/Región/</td>
     </tr>
+    <tr>
+      <td>tipoDePresentación</td>
+      <td>http://chile-datos.degu.cl/data/seia/1/TipoPresentación/</td>
+    </tr>
+    <tr>
+      <td>tipoDeProyecto</td>
+      <td>http://chile-datos.degu.cl/data/seia/1/TipoProyecto/</td>
+    </tr>
   </tbody>
 </table>
 
@@ -571,7 +579,7 @@ descripción posterior</p>
     </tr>
     <tr>
       <td>fecha de presentación</td>
-      <td>proceso:{id} seia:fechaPresentación "{fecha}" . 
+      <td>proceso:{id} seia:fechaDePresentación "{fecha}" . 
 
         <p>Donde la fecha debe ser codificada en el estándar de XML Schema.</p>
       </td>
@@ -589,17 +597,18 @@ descripción posterior</p>
     </tr>
     <tr>
       <td>tipo de presentación</td>
-      <td>Dependiendo del tipo de presentación, se agrega uno de los triples:
+      <td>Dependiendo del tipo de presentación, se agrega uno de los triples: 
 
-        <p>proceso:{id} rdf:type seia:EIA<br />
-        proceso:{id} rdf:type seia:DIA</p>
+        <p>proceso:{id} seia:tipoPresentación tipoPresentación:EIA<br />
+        proceso:{id} seia:tipoPresentación tipoPresentación:DIA</p>
       </td>
     </tr>
     <tr>
       <td>región</td>
-      <td>Según sea la región se agregará uno de los triples:
+      <td>Según sea la región se agregará uno de los triples: 
 
-        <p>proceso:{id} seia:región región:I<br />
+        <p>proceso:{id} seia:región región:Interregional<br />
+        proceso:{id} seia:región región:I<br />
         proceso:{id} seia:región región:II<br />
         proceso:{id} seia:región región:III<br />
         proceso:{id} seia:región región:IV<br />
