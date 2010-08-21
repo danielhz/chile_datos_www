@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
+      "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:owl="http://www.w3.org/2002/07/owl#"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+ xmlns:foaf="http://xmlns.com/foaf/0.1/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>#{@title} - Iniciativa Chile Datos</title>
+  <meta name="generator" content="Amaya, see http://www.w3.org/Amaya/" />
+  <link href="../../../stylesheets/default.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../../javascripts/prototype.js">
+  </script>
+  <script type="text/javascript" src="../../javascripts/default.js">
+  </script>
+</head>
+
+<body about="http://chile-datos.degu.cl/proyectos/buenas_practicas/0010.html">
+
+<div id="header">
+  <a href="index.html">Iniciativa Chile Datos</a>
+</div>
+
+<div id="site-menu">
+  <a href="../../index.html">Inicio</a>
+  <a href="../../participa.html">Participa</a>
+  <a href="../../proyectos.html" class="current-node">Proyectos</a>
+  <a href="../../noticias.html">Noticias</a>
+</div>
+
+<div id="main">
+
+<div id="path">
+  <a href="../../index.html">Iniciativa Chile Datos</a> →
+  <a href="../../proyectos.html">Proyectos</a> →
+  <a href="../index.html">Buenas Prácticas</a> →
+  <a href="index.html">Guía 1 de buenas prácticas para la publicación</a> →
+  <a href="#">#{@title}</a>
+</div>
+
+<div id="abstract">
+<h1>#{@title}</h1>
+
+<div class="news-info">
+Editado por <span id="creator" property="dc:creator">Daniel Hernández</span> y
+en estatus de borrador</div>
+
+<p>#{@description}</p>
+
+</div>
+
+<div id="content">
+  #{@content}
+
+<!-- disqus comments -->
+
+<div id="disqus_thread">
+</div>
+<script type="text/javascript">
+  /**
+    * var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread] 
+    */
+  (function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = 'http://chiledatos.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();</script>
+
+<noscript>
+<p>Please enable JavaScript to view the <a
+href="http://disqus.com/?ref_noscript=chiledatos">comments powered by
+Disqus.</a></p>
+</noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span
+class="logo-disqus">Disqus</span></a> </div>
+</div>
+
+<div id="footer">
+<p>Algunos derechos reservados © 2010 por <a href="nosotros.html">Iniciativa
+Chile Datos</a> bajo la licencia abierta <a
+href="http://creativecommons.org/licenses/by-sa/2.0/cl">CC
+Atribución-Licenciar Igual 2.0 Chile</a>. Los códigos de este sitio también
+se encuentran disponibles para ser revisados y mejorados en un <a
+href="http://github.com/danielhz/chile_datos_www">repositorio git</a>.</p>
+</div>
+<!-- script google analytics -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-16108623-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<!-- script disqus -->
+<script type="text/javascript">
+//<![CDATA[
+(function() {
+var links = document.getElementsByTagName('a');
+var query = '?';
+for(var i = 0; i < links.length; i++) {
+if(links[i].href.indexOf('#disqus_thread') >= 0) {
+query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+}
+}
+document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/chiledatos/get_num_replies.js' + query + '"></' + 'script>');
+})();
+//]]></script>
+</body>
+</html>

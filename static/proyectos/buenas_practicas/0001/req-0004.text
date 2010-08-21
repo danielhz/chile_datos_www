@@ -1,0 +1,29 @@
+# Explicitar derechos
+
+<p property="dc:description">La información publicada debe ir
+acompañada de una descripción de la licencia asociada a ella. Además,
+dicha licencia debe anotarse de una manera que sea legible tanto por
+humanos como por máquinas.</p>
+
+En varias juridicciones existen derechos explícitos sobre los datos,
+cuando esto no ocurre la situación es incierta. Ello desincentivaría
+la creación de aplicaciones sobre los datos, porque las personas
+temerían incurrir en algún delito. De este modo, la publicación de
+información debería hacerse junto con una declaración explícita de
+licencia.
+
+Cuando existen varios estatus legales aplicados sobre los datos, es
+necesario que estos se identifiquen para que los usuarios puedan
+distinguirlos. Además, dado que muchos datos podrían ser procesados
+por medios automáticos, es necesario que estos también sean
+detectables por máquinas.
+
+## Recomendaciones
+
+Se recomienda definir una taxonomía sobre los estatus legales
+aplicables a la información, de modo que sea claro tanto para seres
+humanos como para robots. Esta taxonomía debería utilizar una
+identificación precisa de las licencias. Además, se recomienda usar
+licencias sencillas, que puedan ser descompuestas en las acciones que
+ellas permiten, de modo de poder identificar con claridad si una de
+estas acciones es o no permitida por la licencia.

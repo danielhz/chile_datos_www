@@ -109,6 +109,7 @@ body {
 pre {
     border-left: 10px solid #bdf;
     padding-left: 10px;
+    font-size: 0.8em;
 }
 table.eqnarray {
   margin: 0 auto 0 auto;

@@ -1,0 +1,4 @@
+req-*.html
+*~
+*.html.cache
+index.html

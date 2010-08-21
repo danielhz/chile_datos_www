@@ -1,0 +1,18 @@
+# Indicar la vigencia
+
+<p property="dc:description">Debe quedar clara la vigencia de los
+datos publicados, es decir, se debe poder identificar el instante o
+período de tiempo para el cual las afirmaciones formuladas son
+válidas.</p>
+
+Se debe identificar la vigencia de los datos. Por
+ejemplo, si se menciona a alguien que ocupa un determinado cargo
+público, debe poder verificarse si se trata de un dato actual o si
+esa persona ya no ocupa el cargo. En muchos casos es heurísticamente
+posible adivinar si un dato está vigente, por ejemplo, al descartarlo
+cuando proviene de una publicación demasiado antigua. En muchos casos
+se pueden utilizar metodologías precisas para identificar la vigencia
+de un dato, por ejemplo, indicándola con metadatos de inicio y término
+de ésta, que pueden ser ingresados, tanto en la publicación inicial
+como en integraciones posteriores de los datos.
+

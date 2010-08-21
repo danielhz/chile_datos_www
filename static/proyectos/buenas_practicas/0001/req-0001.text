@@ -1,0 +1,196 @@
+# Permitir que el acceso a los datos sea automatizable
+
+<p property="dc:description">Se debe codificar la información en
+formatos con la expresividad suficiente como para que los datos puedan
+ser extraídos y procesados de manera automática, precisa y
+sencilla.</p>
+
+Es necesario que el acceso a los datos sea automatizable porque,
+frente a grandes volúmenes de información, nuestras
+capacidades de comprensión de ella disminuyen. El que los formatos
+sean procesables nos permite: poder encontrar documentos relevantes,
+poder extraer conclusiones de los datos contenidos en ellos,
+visualizar la información de una manera distinta  la oficial y poder
+integrar datos de fuentes diversas.
+
+Un ejemplo en el cual los datos no son legibles de manera automática y
+sencilla es el uso de formatos de imágenes como mapas de bits para
+expresar mapas o textos cuyos originales eran archivos de programas
+cartográficos o procesadores de texto. El problema de la imagen es que
+esconde información, que si bien un ser humano puede comprender, no
+es fácil de recuperar automáticamente con exactitud.
+
+En el caso del mapa, es complejo volver a las coordenadas y
+descripciones geográficas originales y ello incrementaría los costos
+de generar nuevos mapas en base a mapas preexistentes.
+
+En el caso del texto, podríamos querer
+recuperar documentos que posean ciertas palabras clave, tal como se
+suele hacer en el área de la recuperación de la información. Las
+técnicas conocidas como OCR (optical character recognition) nos
+permiten recuperar parte del texto, pero están sujetas a errores que,
+además, dependen de la calidad de la imagen proporcionada.
+
+En cualquiera de los dos casos ejemplificados, se impone una barrera
+innecesaria para la recuperación de los datos originales. Además, el
+costo de la recuperación de los datos se incrementa con el volumen de
+la colección de documentos.
+
+No basta con que los documentos sean publicados en formatos que puedan
+ser leídos de manera automática, además se requiere que éstos puedan
+ser extraídos desde los documentos, es decir, que un
+programa pueda localizar un dato dentro del documento y
+leerlo. Publicar datos en formatos como HTML ayuda, en el sentido de
+que los documentos pueden ser leídos de manera automática, pero, para
+acceder a la información se requiere conocer cómo esta está organizada
+dentro del documento o dentro de una colección de documentos. La
+necesidad de conocer la estructura de los documentos es una primera
+barrera impuesta a alguien que desee recuperar los datos
+codificados. Una segunda barrera supone que esta estructura no sea
+del todo sencilla o homogénea, lo que implicaría un aumento en la
+complejidad de los programas para la lectura automatizada de los
+datos. A medida que esta variabilidad en la estructura aumenta, las
+posibilidades que pueden tener los ciudadanos de construir programas
+para acceder a los datos y mantenerlos vigentes disminuyen.
+
+## Recomendaciones
+
+- No usar formatos de presentación, como imágenes, sin entregar sus
+  fuentes. Se debe priorizar la entrega de los datos por sobre una
+  visualización de ellos.
+- Usar aquellos formatos estándares y abiertos que son comunmente
+  usados en las temáticas en las sobre las que tratan los datos a
+  publicar.
+- Al publicar datos en formatos como HTML, usar metodologías para
+  marcar los datos dentro de los documentos, tales como microformatos
+  o RDFa.
+- Preferir el uso de RDFa por sobre los microformatos.
+- Validar el HTML publicado. Documentos no válidos podrían ser mal
+  interpretados.
+
+Para muchos tipos de datos existen formatos estándares y abiertos  que
+hacen innecesaria la creación de nuevos formatos. Por ejemplo, en el
+caso de los datos geográficos, existen estándares para codificar los
+elementos de un mapa, en formatos tales como el GML (geografical
+markup language), propuesto por el [Open Geospatial Consortium][ogc] y
+el KML (keyhole markup language), que se ha popularizado por su uso en
+[Google Earth][kml]. Estos formatos pueden ser leídos, utilizados con
+variados servicios e integrados en varias implementaciones de sistemas
+de información geográficos, entre los cuales ya existen varios
+disponibles de manera libre.
+
+Hay datos que por su naturaleza específica no cuentan con formatos
+estándares y globales para ser codificados. Para ello en Chile se
+ha creado, en el [Decreto Supremo Nº271/2008][decreto271/2008],
+el [Administrador de Esquemas y Metadatos][aem]
+(AEM), organismo que tiene por objeto regular el procedimiento de
+inscripción de esquemas XML necesarios para la definición de
+estándares de intercambio de datos entre Organismos Públicos.
+
+Los esquemas desarrollados por el AEM tienen como objetivo el
+intercambio de datos entre organismos públicos y no la publicación de
+datos para que éstos sean accedidos por la ciudadanía. Es más, para la
+implementación de la [Ley Nº20.285][ley], sobre
+el acceso a la información pública, indicada con mayor detalle en el
+[Oficio Ordinario Nº413/2009][oficio], se hizo uso de documentos HTML
+como formato para presentar la información. No obstante, estos
+documentos no eran HTML válido y su estructura no resultaba no
+entregaba las suficientes ayudas para la extracción de los datos
+codificados.
+
+Para permitir la publicación de datos en la Web, es decir, sobre
+documentos HTML, se requieren metodologías para expresar sobre ellos
+las estructuras de los datos. Para ello existen principalmente dos
+metodologías: [los microformatos][microformatos] y
+[la Web Semántica][sw].
+
+Los microformatos son convenciones en la estructura de un documento
+HTML, que hacen uso de los elementos propios de su sintaxis para
+expresar datos. Así, por ejemplo, si se quiere expresar la asociación
+entre una persona y una URL, se puede usar el microformato hcard.
+    
+    <div class="vcard">
+      <p>
+        <a class="url fn" href="http://tantek.com/">
+          Tantek Çelik
+        </a>
+      </p>
+    </div>
+
+En este ejemplo se utiliza el atributo `@class` de HTML para incluir las
+clases `vcard`, `url` y `fn` que permiten detectar que se está ante la
+presencia de datos, que interpretados pueden ser mapeados 1:1 a datos
+codificables en el formato vcard:
+
+    BEGIN:VCARD
+    VERSION:3.0
+    N:Çelik;Tantek
+    FN:Tantek Çelik
+    URL:http://tantek.com/
+    END:VCARD
+
+En el caso de la Web Semántica el formato propuesto es [RDFa][rdfa],
+mediante el cual datos similares a los anteriores puden codificarse como:
+
+    <div typeof="foaf:Person" xmlns:foaf="http://xmlns.com/foaf/0.1/">
+      <p>
+        <a rel="foaf:homepage" href="http://www.w3.org/People/Berners-Lee/">
+          <span property="foaf:name">Tim Berners-Lee</span>
+        </a>
+      </p>
+    </div>
+
+El marcado que utiliza RDFa se diferencia de los microformatos en que
+posee un modelo general para poder describir todos los datos
+extraídos. En cambio, para los microformatos el modelo en el cual se
+representan los datos y la forma en que se extraen e interpretan
+dependen de cada microformato. El modelo sobre el que se sustenta RDFa
+se basa en una forma para expresar datos conocida como RDF (resource
+description framework). La unidad básica del RDF son triples que
+representan una fórmula lógica compuesta de sujeto, predicado y
+objeto. Así, el ejemplo anterior codifica los siguientes triples:
+
+<table style="width:90%; margin: 0 auto 0 auto;">
+<tbody>
+<tr><th>sujeto</th><th>predicado</th><th>objeto</th></tr>
+<tr><td>_:a</td><td>rdfs:type</td><td>foaf:Person</td></tr>
+<tr><td>_:a</td><td>foaf:homepage</td><td>"http://www.w3.org/People/Berners-Lee/"</td></tr>
+<tr><td>_:a</td><td>foaf:name</td><td>"Tim Berners-Lee"</td></tr>
+</tbody>
+</table>
+
+Las ventajas que tiene el uso de RDFa sobre microformatos son: que la
+extracción de datos es uniforme y que los datos poseen un modelo que
+ha sido ampliamente estudiado, como son las
+[bases de datos orientadas a grafos][grafos], y que cuentan con un
+lenguaje de consulta llamado [SPARQL][sparql] con varias
+implementaciones funcionando. A cambio, los microformatos pueden
+resultar más simples al no requerir crear vocabularios y abstracciones
+como esquemas, taxonomías u ontologías para modelar la información. No
+obstante, consideramos que los beneficios asociados a las facilidades
+de integración que ofrece el modelo RDF son suficientes como para
+recomendar el uso de RDFa por sobre los microformatos para la
+codificación de datos en la Web.
+
+[ogc]: http://www.opengeospatial.org/ "Open Geospatial Consortium"
+
+[kml]: http://code.google.com/apis/kml/documentation/ "Google: KML documentation"
+
+[decreto271/2008]: http://www.leychile.cl/Navegar?idNorma=284838 "Decreto Supremo Nº271/2008; Ministerio de Economía, Fomento y Reconstrucción; Subsecretaría de Economía, Fomento y Reconstrucción"
+
+[aem]: http://www.aem.gob.cl "Administrador de Esquemas y Metadatos"
+
+[ley]: http://www.leychile.cl/Navegar?idNorma=276363 "Ley Nº20.285, sobre el acceso a la información pública."
+
+[oficio]: http://www.gobiernotransparente.cl/asistente/oficios/Of_413_FinalTA.pdf "Oficio Ordinario Nº413/2009; Ministerio Secretaría General de la Presidecia."
+
+[microformatos]: http://microformats.org "Microformatos"
+
+[sw]: http://www.w3.org/standards/semanticweb/ "W3C: La web semántica"
+
+[rdf]: http://www.w3.org/standards/techs/sparql#w3c_all "W3C: RDFa current status"
+
+[grafos]: http://www.dcc.uchile.cl/~cgutierr/papers/surveyGDB.pdf "R. Angles, C. Gutierrez, Survey of Graph Database Models, ACM Computing Surveys, Vol. 40, No. 1, February 2008."
+
+[sparql]: http://www.w3.org/standards/techs/sparql#w3c_all "W3C: SPARQL current status"
+
