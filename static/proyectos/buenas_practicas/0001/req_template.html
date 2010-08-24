@@ -43,13 +43,26 @@
 </div>
 
 <div id="abstract">
-<h1>#{@title}</h1>
+  <h1>#{@title}</h1>
 
-<div class="news-info">
-Editado por <span id="creator" property="dc:creator">Daniel Hernández</span> y
-en estatus de borrador</div>
+  <div id="this-document-info">
+    <p>Esta sección es parte de la <a href="index.html">Guía 1 de buenas
+    prácticas para la publicación</a>.</p>
+    <dl>
+      <dt>Autores</dt>
+      <dd>
+	<ul>
+	  <li property="dc:creator">Daniel Hernández</li>
+	  <li property="dc:creator">Claudio Gutiérrez</li>
+	</ul>
+      </dd>
+    </dl>
+  </div>
 
-<p>#{@description}</p>
+  <?rb unless @description.nil? ?>
+  <h2>Resumen de la práctica</h2>
+  <p>#{@description}</p>
+  <?rb end ?>
 
 </div>
 

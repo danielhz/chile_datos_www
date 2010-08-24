@@ -1,3 +1,9 @@
+/* @font-face { */
+/*     font-family: NuvoWeb-Medi; */
+/*     /\*src: url(../fonts/NuvoWeb-Medi.woff) format('woff');*\/ */
+/*     src: url(http://www.w3.org/Fonts/WG/fonts/NuvoWeb-Medi.woff) format('woff'); */
+/* } */
+
 body {
     font-family: sans-serif;
     margin: 0;
@@ -54,7 +60,7 @@ body {
     padding: 10px;
 }
 #abstract h1 {
-    font-size: 14px;
+    font-size: 1.5em;
     font-weight: normal;
     color: #05a;
 }
@@ -170,4 +176,37 @@ table.ficha-proyecto td {
    padding: 2px 6px 2px 6px;
    border: 1px solid #bbb;
    background-color: #eee;
+}
+
+#this-document-info {
+    border-top: 1px solid #aaa;
+    font-weight: normal;
+    font-size: 0.9em;
+    font-family: serif;
+    color: #666;
+}
+#this-document-info dd {
+    margin: 0 0 0 1em;
+    padding: 0;
+}
+#this-document-info ul {
+    padding: 0 0 0 1.5em;
+}
+
+#abstract ol {
+    padding: 0 0 0 2.8em;
+}
+
+h1 {
+    font-family: NuvoWeb-Medi, sans-serif;
+}
+
+body { counter-reset: h2; }
+#content h2:before {
+    content: counter(h2) ". ";
+    display: inline;
+}
+#content h2 {
+    counter-increment: h2;
+    counter-reset: h3;
 }

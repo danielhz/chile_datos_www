@@ -5,24 +5,47 @@ acompañada de una descripción de la licencia asociada a ella. Además,
 dicha licencia debe anotarse de una manera que sea legible tanto por
 humanos como por máquinas.</p>
 
-En varias juridicciones existen derechos explícitos sobre los datos,
-cuando esto no ocurre la situación es incierta. Ello desincentivaría
-la creación de aplicaciones sobre los datos, porque las personas
-temerían incurrir en algún delito. De este modo, la publicación de
-información debería hacerse junto con una declaración explícita de
+En general, cuando no se hace ninguna referencia al estatus legal de
+una publicación, se presume la reserva de todos los derechos. Esto
+desincentivaría la creación de aplicaciones sobre los datos, por el
+temor de incurrir en un delito. De este modo, la publicación de la
+información debería hacerse junto con una declaración explícita de la
 licencia.
 
-Cuando existen varios estatus legales aplicados sobre los datos, es
-necesario que estos se identifiquen para que los usuarios puedan
-distinguirlos. Además, dado que muchos datos podrían ser procesados
-por medios automáticos, es necesario que estos también sean
-detectables por máquinas.
+Para que sea posible integrar información de diversas fuentes, sin
+infringir posibles licencias presentes en algunas de ellas, es
+necesario que los derechos sean publicados de manera explícita de un
+modo que sean entendibles también por máquinas.
 
 ## Recomendaciones
 
+Se recomienda utilizar un conjunto de licencias acotado y en las que
+sea simple comprender que es lo que se autoriza y que no se autoriza
+hacer con una obra.
+
+Cuando los datos son publicados mediante punteros a archivos en un
+catálogo, se recomienda que en el catálogo se indique la licencia a la
+que éstos están sujetos. Para el caso de catálogos web, se recomienda
+indicar la licencia mediante un vocabulario como Dublin Core y el
+sistema de marcado RDFa. Por ejemplo:
+
+    <div about="http://uri-archivo">
+       <h2 href="http://uri-archivo">Título del documento</h2>
+       <dl>
+         <dt>Licencia</dt>
+         <dd>
+           <a rel="dc:rights" href="http://creativecommons.org/licenses/by-sa/3.0/">
+             Creative Commons Attibution-ShareAlike
+           </a>
+         </dd>
+       </dl>
+    </div>
+
 Se recomienda definir una taxonomía sobre los estatus legales
 aplicables a la información, de modo que sea claro tanto para seres
-humanos como para robots. Esta taxonomía debería utilizar una
+humanos como para robots.
+
+Esta taxonomía debería utilizar una
 identificación precisa de las licencias. Además, se recomienda usar
 licencias sencillas, que puedan ser descompuestas en las acciones que
 ellas permiten, de modo de poder identificar con claridad si una de

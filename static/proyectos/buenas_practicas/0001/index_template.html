@@ -39,20 +39,78 @@
 <div id="abstract">
   <h1>#{@title}</h1>
 
-  <div class="news-info">
-    Editado por <span id="creator2" property="dc:creator">Daniel Hernández</span>
-    y en estatus de borrador
+  <div id="this-document-info">
+    <dl>
+      <dt>Esta versión</dt>
+      <dd>
+	<a href="http://chile-datos.degu.cl/guias/0001/">
+	  http://chile-datos.degu.cl/guias/0001/
+	</a>
+      </dd>
+      <dt>La última versión</dt>
+      <dd>
+	<a href="http://chile-datos.degu.cl/guias/0001/">
+	  http://chile-datos.degu.cl/guias/0001/
+	</a>
+      </dd>
+      <dt>Versión imprimible</dt>
+      <dd>
+	<a href="http://chile-datos.degu.cl/guias/0001.pdf">
+	  http://chile-datos.degu.cl/guias/0001.pdf
+	</a>
+      </dd>
+      <dt>Autores</dt>
+      <dd>
+	<ul>
+	  <li property="dc:creator">Daniel Hernández</li>
+	  <li property="dc:creator">Claudio Gutiérrez</li>
+	</ul>
+      </dd>
+    </dl>
   </div>
 
+  <?rb unless @description.nil? ?>
+  <h2>Resumen</h2>
   <p>#{@description}</p>
+  <?rb end ?>
 
-  <h2>Prácticas</h2>
-
-  <ul>
+  <h2>Contenidos</h2>
+  <ol>
+  <li><a href="#intro">Introducción</a></li>
   <?rb @entries.each do |entry| ?>
   <li><a href="##{entry[:url]}">#{entry[:title]}</a></li>
   <?rb end ?>
-  </ul>
+  </ol>
+
+  <?rb unless @status.nil? ?>
+  <?rb end ?>
+  <h2>Estatus de este documento</h2>
+
+  <p><em>Esta sección describe el estatus de esta guía al momento de
+      su publicación. Otros documentos podrían reemplazar esta guía,
+      La lista de todos las guías puede ser
+      encontrada
+      en <a href="../">http://chile-datos.degu.cl/guias/</a>.</em></p>
+
+  <p>Esta guía es el primer borrador público desarrollado por la
+    Iniciativa Chile Datos, enmarcado en nuestro esfuerzo para mejorar
+    el acceso a la información pública. En ella se han seleccionado
+    sólo algunos puntos relevantes para la publicación de la
+    información, con el objetivo de concentrarnos en un conjunto
+    pequeño de ellos y poder iniciar la discusión sobre el tema de
+    manera oportuna. Así, esperamos que los comentarios aportados por
+    la comunidad a esta guía nos permitirán ir generando ediciones más
+    completas y con recomendaciones mejor desarrolladas.</p>
+
+  <p>Entre los aspectos requeridos para la publicación, existen
+    algunos tales como la preservación de la información, la
+    granularidad, la completitud, la accesibilidad, la publicación
+    opotuna, entre otros, que también son relevantes y que en algunos
+    casos son requisitos previos para los aspectos que vamos a
+    describir en esta guía. No obstante, preferimos dejarlos para ser
+    posteriormente desarrollados en otra guía, pues son aspectos más
+    relacionados con políticas de publicación que con las prácticas
+    que se abordarán en está guía.</p>
 
 </div>
 

@@ -1,10 +1,10 @@
 # Usar identificadores
 
 <p property="dc:description">Se debe usar un vocabulario preciso para
-identificar los elementos referidos en las
-publicaciones, con la finalidad de poder distiguir de manera
-automática cuando nos referimos en más de una ocasión a un mismo
-elemento y minimizar datos en los que el objeto referido es
-ambigüo, es decir, en los que hay más de un objeto candidato a ser
-interpretado como el referenciado.</p>
+los elementos referidos en las publicaciones, con la finalidad de
+poder distiguir de manera automática cuando nos referimos, en más de
+una ocasión, a un mismo elemento y minimizar las situaciones en las
+que se produce la ambigüedad. Decimos que la referencia a un objeto es
+ambigua cuando hay más de un candidato a ser interpretado como el
+referido.</p>
 
