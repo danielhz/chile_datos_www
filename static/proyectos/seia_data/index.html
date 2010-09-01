@@ -148,9 +148,9 @@ proyectos con la siguiente información para cada uno de ellos:</p>
             <dd>Hay que consultarlo, porque se parece a no admitido a
               tramitación.</dd>
           <dt>Revocado</dt>
-            <dd>Por el momento existe sólamente un proyecto no revocado y se
+            <dd>Por el momento existe solamente un proyecto no revocado y se
               trata de un proyecto al cual se le había aceptado el proyecto,
-              pero luego no cumplió con las normas en la ejecusión de este y
+              pero luego no cumplió con las normas en la ejecución de este y
               , por consiguiente, el permiso le fue revocado.</dd>
         </dl>
 
@@ -199,7 +199,7 @@ proyectos con la siguiente información para cada uno de ellos:</p>
 </table>
 
 <p>Al acceder a la ficha de uno de los proyectos podemos obtener la
-información que se encuentra acontinuación. La información que ya se tenía
+información que se encuentra a continuación. La información que ya se tenía
 de la lista se marca en color gris.</p>
 
 <table class="data-description" border="0" style="width: 100%">
@@ -397,8 +397,8 @@ de la lista se marca en color gris.</p>
     <tr class="redundante">
       <td>tipo de presentación</td>
       <td>Corresponde a tipo de presentación que aparece en la lista, salvo
-        que en vez de DIA se escribe Declaración de Inpacto Ambiental y en vez
-        de EIA se escribe Evaluación de Implacto ambiental.</td>
+        que en vez de DIA se escribe Declaración de Impacto Ambiental y en vez
+        de EIA se escribe Evaluación de Impacto ambiental.</td>
     </tr>
     <tr class="redundante">
       <td>id</td>
@@ -430,8 +430,8 @@ geográficas de todos los proyectos resultantes de la búsqueda.</p>
         ficha.</td>
     </tr>
     <tr>
-      <td>cordenadas</td>
-      <td>Un par de números que indican un pundo donde se encuentra el
+      <td>coordenadas</td>
+      <td>Un par de números que indican un punto donde se encuentra el
         proyecto, por ejemplo -74.316329956055,-44.458780108825.</td>
     </tr>
   </tbody>
@@ -453,12 +453,12 @@ primeros 2.000 proyectos encontrados en la consulta.</p>
     </tr>
     <tr>
       <td>sector productivo</td>
-      <td>El sector productivo es un párametro que se ofrece al momento de
+      <td>El sector productivo es un parámetro que se ofrece al momento de
         hacer una consulta, pero que luego no aparece en las fichas. Toma uno
         de siguientes valores: Agropecuario, Energía, Equipamiento, Forestal,
-        Infraestructura Idráulica, Infraestructura Portuaria, Infraestructura
-        de Transporte, Inmoviliarios, Instalaciones fabriles varias, Minería,
-        Otros, Pesca y Acuicultura, Planificación Territorial e Inmoviliarios
+        Infraestructura Hidráulica, Infraestructura Portuaria, Infraestructura
+        de Transporte, Inmobiliarios, Instalaciones fabriles varias, Minería,
+        Otros, Pesca y Acuicultura, Planificación Territorial e Inmobiliarios
         en Zonas, Saneamiento Ambiental.</td>
     </tr>
   </tbody>
@@ -472,15 +472,15 @@ pronto (durante estas semanas).</p>
 
 <p>En primera instancia bajamos los documentos html, luego los pasamos por
 filtros para corregir sus estructuras a modo de que sean parseables. En esta
-tarea hay un proceso manual, porque cirertos errores como los de poner comillas
+tarea hay un proceso manual, porque ciertos errores como los de poner comillas
 dentro de un atributo rompen completamente la estructura del documento. Luego
 convertimos los HTML en archivos YAML, y posteriormente leemos los archivos
-YAML en archivos que contienen queries en SPARQL que es enviado al endpoint
+YAML en archivos que contienen consultas en SPARQL que es enviado al endpoint
 para agregar los nuevos datos. Por el momento los datos se concentran en la
 información contenida en la lista de proyectos y es modelada de la manera que
 se explica a continuación.</p>
 
-<p>Primero debemos considerar algunos prefijos para hacer más brebe la
+<p>Primero debemos considerar algunos prefijos para hacer más breve la
 descripción posterior</p>
 
 <table class="data-description" border="0" style="width: 100%">
@@ -644,7 +644,7 @@ bienvenida.</p>
 <ul>
   <li>Ver progresiones de los montos de inversión y cantidades de proyectos
     por rubro, tipo de proyecto y por región.</li>
-  <li>Estudiar la variación de porcentajes entre proyectos aprovados,
+  <li>Estudiar la variación de porcentajes entre proyectos aprobados,
     rechazados y desistidos.</li>
   <li>Visualizar los proyectos en los cuales haya habido cambios recientes, en
     especial, cuando hay plazos para que la ciudadanía presente
@@ -663,11 +663,11 @@ bienvenida.</p>
     resultante se rompe, puesto que quedan atributos mal cerrados, al utilizar
     los títulos como un atributo.</li>
   <li>En algunos casos se encontró un elemento h2 dentro de un tbody, lo que
-    lo hacía inparseable. Para corregir el problema, simplemente se hizo el
+    lo hacía imparseable. Para corregir el problema, simplemente se hizo el
     reemplazo del patrón con problemas por un patrón corregido.</li>
-  <li>Los elementos de la estructura no indican donde se ecuentran los datos,
+  <li>Los elementos de la estructura no indican donde se encuentran los datos,
     así, la tarea de obtener los datos implicó buscar una palabra clave, como
-    un título y luego buscar la posción relativa dentro del árbol donde
+    un título y luego buscar la opción relativa dentro del árbol donde
     podría encontrarse el dato.</li>
 </ul>
 </div>

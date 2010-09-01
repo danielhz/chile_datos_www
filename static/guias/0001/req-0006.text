@@ -5,6 +5,22 @@ datos publicados, es decir, se debe poder identificar el instante o
 período de tiempo para el cual las afirmaciones formuladas son
 válidas.</p>
 
+Es necesario conocer la vigencia de los datos para que estos puedan
+ser integrados de manera automática desde distintas fuentes. Existen
+muchas afirmaciones que dentro de un contexto pueden ser válidas
+mientras que dentro de otro pueden ser falsas. Por ejemplo, si se dice
+que un proyecto que pasa por un sistema de evaluación de impacto
+ambiental se localizaba en una determinada región, si esta cambia sus
+límites, como ha ocurrido en varias ocasiones, la afirmación pasaría a
+ser falsa en el nuevo contexto. Otro ejemplo son las afirmaciones que
+refieren a asignaciones de cargos públicos. Si los documentos sólo
+indicasen dicha información mediante frases como "El director del
+organismo X es Y", entonces una pregunta que no considera la vigencia
+como "¿quién es el director del organismo Y? podría arrojar un
+conjunto de directores que ya no ejercen el cargo.
+
+Existen dos maneras de localizar un evento en el tiempo: los puntos 
+
 Se debe identificar la vigencia de los datos. Por
 ejemplo, si se menciona a alguien que ocupa un determinado cargo
 público, debe poder verificarse si se trata de un dato actual o si
